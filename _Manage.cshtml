@@ -2,7 +2,7 @@
 
 @{
     var all = AsDynamic(Data["Links"]);
-    var newKey = GenerateCode("q", 3, true);
+    var newKey = GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, App.Settings.IgnoreCase);
 }
 
 <table>
@@ -15,7 +15,11 @@
     </tr>
     @foreach(var link in all){
 
-        <td>@link.Key</td>
+        <td>
+            <a onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
+                @App.Settings.ShortDomain/@link.Key
+            </a>
+        </td>
         <td>@link.Group[0].Title</td>
         <td>@link.Title</td>
         <td>@link.Link</td>
