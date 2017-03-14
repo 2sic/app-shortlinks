@@ -1,0 +1,58 @@
+
+
+@{
+    var all = AsDynamic(Data["Links"]);
+    var newKey = GenerateCode("q", 3, true);
+}
+
+<table>
+    <tr>
+        <th>Key</th>
+        <th>Group</th>
+        <th>Title</th>
+        <th>Target</th>
+        <th>Retired</th>
+    </tr>
+    @foreach(var link in all){
+
+        <td>@link.Key</td>
+        <td>@link.Group[0].Title</td>
+        <td>@link.Title</td>
+        <td>@link.Link</td>
+        <td>@link.Retired</td>
+    }
+</table>
+@Edit.Toolbar(actions: "new", contentType: "Link", prefill: new { Key = newKey }) for @newKey
+
+
+@functions {
+    int maxTries = 100; // only try this 100x to not crash
+    public string GenerateCode(string prefix, int length, bool lowerOnly) {
+        var realLength = length - prefix.Length;
+        var existingKeys = AsDynamic(Data["Links"])
+            .Select(l => l.Key)
+            .Distinct()
+            .ToDictionary(k => k, null);
+        
+        for(var attempt = 0; attempt < maxTries; attempt++) {
+            var newKey = prefix + RandomString(realLength, lowerOnly);
+            if(!existingKeys.ContainsKey(newKey))
+                return newKey;
+        }
+
+        throw new Exception("tried too many attempts, didn't find a code, will abort'");
+    }
+
+    // funky, trivial randomizer
+    // got basic idea from http://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings-in-c
+    private static Random random = new Random();
+
+    public static string RandomString(int length, bool lowerOnly)
+    {
+        const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        const string withUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + chars;
+        
+        return new string(Enumerable.Repeat(lowerOnly ? chars : withUpper, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+}
