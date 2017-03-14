@@ -1,5 +1,3 @@
-
-
 @{
     var all = AsDynamic(Data["Links"]);
     var newKey = GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, App.Settings.IgnoreCase);
@@ -12,24 +10,56 @@
         <th>Title</th>
         <th>Target</th>
         <th>Retired</th>
+        <th>Edit</th>
+        <th>API</th>
     </tr>
     @foreach(var link in all){
 
         <td>
-            <a onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
+            <a href="@App.Settings.Protocol@App.Settings.ShortDomain/@link.Key" target="_blank">
                 @App.Settings.ShortDomain/@link.Key
             </a>
         </td>
-        <td>@link.Group[0].Title</td>
+        <td>
+            @{
+                var cat = ((IEnumerable<dynamic>)link.Group).FirstOrDefault();
+                var catTitle = cat != null ? cat.Title : "";
+            }
+            @catTitle
+        </td>
         <td>@link.Title</td>
-        <td>@link.Link</td>
+        <td>
+            <a href="@link.Link" target='_blank'>
+                @link.Link
+            </a>
+        </td>
         <td>@link.Retired</td>
+        <td>
+            <a onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
+                edit
+            </a>
+        </td>
+        <td>
+            <a href="/todo" target="_blank">test</a>
+        </td>
     }
 </table>
 @Edit.Toolbar(actions: "new", contentType: "Link", prefill: new { Key = newKey }) for @newKey
 
 
 @functions {
+    // try to generate a good web-api test-link
+
+    public string TestLink(string key){
+        return "testing...";
+        // return DotNetNuke.Web.Api.UrlHelperExtensions.DnnLink(new System.Web.Http.Routing.UrlHelper(Request), "2sxc", "api/ShortLink/Redirect", new { key = key});
+    }
+
+}
+
+@functions {
+    // this is the block in charge of creating unique, new url-keys which are not yet in use
+
     int maxTries = 100; // only try this 100x to not crash
     public string GenerateCode(string prefix, int length, bool lowerOnly) {
         var realLength = length - prefix.Length;
