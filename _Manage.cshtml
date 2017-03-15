@@ -40,7 +40,7 @@
             </a>
         </td>
         <td>
-            <a href="/todo" target="_blank">test</a>
+            <a href="@TestLink(link.Key)" target="_blank">test</a>
         </td>
     }
 </table>
@@ -51,7 +51,9 @@
     // try to generate a good web-api test-link
 
     public string TestLink(string key){
+        return "/shortlinks/desktopmodules/2sxc/api/app/ShortLinks/api/Redirect/Go?key=" + key;
         return "testing...";
+        // return Url.Link("DefaultApi", new { id = 3 }); //.RouteUrl("DefaultApi", new { httproute=true, controller="Albums", id=3});
         // return DotNetNuke.Web.Api.UrlHelperExtensions.DnnLink(new System.Web.Http.Routing.UrlHelper(Request), "2sxc", "api/ShortLink/Redirect", new { key = key});
     }
 
