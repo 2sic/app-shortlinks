@@ -1,0 +1,53 @@
+todo<br>
+retired / fallback<br>
+setup web.config<br>
+
+
+<h1>Short Link Manager</h1>
+<div>
+    <h2>What is the ShortLink Manager?</h2>
+    <p>Basically this is a URL shortener, similar to bit.ly or goo.gl - except that it's on your site, and under your control. The core features are:</p>
+
+    <ol>
+        <li>It manages short url-keywords like "qrt" and if this link is used, it will redirect to another url</li>
+        <li>The redirect-url can contain placeholders like {key} in case the target wants to know the key</li>
+        <li><strong>There are 4 types of Redirects</strong>
+            <ol>
+                <li>Standard Redirect: just redirect to a given url, mapped to the key</li>
+                <li>Group Redirect: redirect all keys in this group to another url - typically forwarding the key as well</li>
+                <li>Retired Redirect: when a key is marked as retired, the user will be redirected to the retired link</li>
+                <li>Fallback Redirect: this is when a key isn't known</li>
+            </ol>
+        </li>
+
+    </ol>
+</div>
+
+<div>
+    <h2>Basics Terms and Concepts</h2>
+    <p>To get started, you need to understand the basics of a redirect-system. </p>
+    <ol>
+        <li>The <strong>key</strong> or <strong>keyword</strong> is the bit after the url, which identifies the short-link. <br>
+        Example: "asl" on <em>http://2qr.ch/asl</em></li>
+        <li>The <strong>target</strong> or <strong>link target</strong> is where the browser should go when this short-link is used. <br>
+        Example: <em>http://2qr.ch/asl</em> would send you to <em>2sxc.org/en/apps/app/short-link-system-like-goo.gl-or-bit.ly-for-dnn</em></li>
+        <li>An <em>optional</em> <strong>short domain</strong> can further help shorten your URLs - like we from <a href="https://www.2sic.com/" target="_blank">2sic</a> like to use <strong>2qr.ch</strong> as our main-short url for tiny QR-codes</li>
+        <li>A <strong>forward-redirect</strong> passes the key to another system - for example when "all keys beginning with 'c' belong to the product catalog" - these cases assume that the target-system will resolve the key itself </li>
+    </ol>
+    
+
+
+</div>
+<h2>Basic Redirects</h2>
+<div>
+    Just type in the target address in the link
+</div>
+
+<div>
+    <h2>Setup</h2>
+    <ol>
+        <li>  you must first setup an initial redirect in your web.config - it's a bit complex (sorry), but here's how:   </li>
+        <li></li>
+    </ol>
+
+</div>

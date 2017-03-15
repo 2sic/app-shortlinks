@@ -8,12 +8,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Linq;
-//using System.Web.Compilation;
-//using System.Runtime.CompilerServices;
-// using DotNetNuke.Services.Mail;
-// using Newtonsoft.Json;
 using System.Text.RegularExpressions;
-
 
 public class RedirectController : SxcApiController
 {
@@ -34,26 +29,28 @@ public class RedirectController : SxcApiController
         if(current == null)
             return GoToDefault(key);
 
+
+        var link = current.Link;
+
         // todo: 
         // 4. if yes and not retired: redirect
         // 5. if yes and retired: redirect to app-setting
         if(current.Retired != null && current.Retired)
-            return GoToDefault(key);
+            link = App.Settings.RetiredLink;
 
         // decide what to do with the link / how to handle it
-        var link = current.Link;
         var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();
         var mode = grp != null ? grp.RedirectType : "default";
-        var forward = grp != null ? grp.ForwardHandler : "";
+        string forward = grp != null ? grp.ForwardHandler.ToString() : "";
 
 
         if(mode == "forward" && !String.IsNullOrEmpty(forward))
-            link = ReplaceCaseInsensitive(forward, "{link}", link);
+            link = ReplaceCI(forward, "{link}", link);
 
         // now inject various patters as needed
-        link = ReplaceCaseInsensitive(link, "{key}", key);
-        link = ReplaceCaseInsensitive(link, "{domain}", domain);
-        link = ReplaceCaseInsensitive(link, "{url}", url);
+        link = ReplaceCI(link, "{key}", key);
+        link = ReplaceCI(link, "{domain}", domain);
+        link = ReplaceCI(link, "{url}", url);
 
         // todo: maybe log?
 
@@ -88,7 +85,7 @@ public class RedirectController : SxcApiController
         return response;
     }
 
-    private static string ReplaceCaseInsensitive(string input, string search, string replacement){
+    public static string ReplaceCI(string input, string search, string replacement){
         string result = Regex.Replace(
             input ?? "",
             Regex.Escape(search ?? ""), 
@@ -97,5 +94,5 @@ public class RedirectController : SxcApiController
         );
         return result;
     }
-
 }
+
