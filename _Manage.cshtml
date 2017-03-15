@@ -2,50 +2,55 @@
     var all = AsDynamic(Data["Links"]);
     var newKey = GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, App.Settings.IgnoreCase);
 }
-
+<div class="sc-element">
+@Edit.Toolbar()
 <table>
     <tr>
+        <th>Edit</th>
         <th>Key</th>
         <th>Group</th>
         <th>Title</th>
         <th>Target</th>
         <th>Retired</th>
-        <th>Edit</th>
         <th>API</th>
     </tr>
-    @foreach(var link in all){
 
-        <td>
-            <a href="@App.Settings.Protocol@App.Settings.ShortDomain/@link.Key" target="_blank">
-                @App.Settings.ShortDomain/@link.Key
-            </a>
-        </td>
-        <td>
-            @{
-                var cat = ((IEnumerable<dynamic>)link.Group).FirstOrDefault();
-                var catTitle = cat != null ? cat.Title : "";
-            }
-            @catTitle
-        </td>
-        <td>@link.Title</td>
-        <td>
-            <a href="@link.Link" target='_blank'>
-                @link.Link
-            </a>
-        </td>
-        <td>@link.Retired</td>
-        <td>
-            <a onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
-                edit
-            </a>
-        </td>
-        <td>
-            <a href="@TestLink(link.Key)" target="_blank">test</a>
-        </td>
+    @foreach(var link in all){
+        <tr>
+            <td>
+                <a onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
+                    edit
+                </a>
+            </td>
+            <td>
+                <a href="@App.Settings.Protocol@App.Settings.ShortDomain/@link.Key" target="_blank">
+                    @App.Settings.ShortDomain/@link.Key
+                </a>
+            </td>
+            <td>
+                @{
+                    var cat = ((IEnumerable<dynamic>)link.Group).FirstOrDefault();
+                    var catTitle = cat != null ? cat.Title : "";
+                }
+                @catTitle
+            </td>
+            <td>@link.Title</td>
+            <td>
+                <a href="@link.Link" target='_blank'>
+                    @link.Link
+                </a>
+            </td>
+            <td>@link.Retired</td>
+            <td>
+                <a href="@TestLink(link.Key)" target="_blank">test</a>
+            </td>
+        </tr>
     }
 </table>
+</div>
+<div>
 @Edit.Toolbar(actions: "new", contentType: "Link", prefill: new { Key = newKey }) for @newKey
-
+</div>
 
 @functions {
     // try to generate a good web-api test-link

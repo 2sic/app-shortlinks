@@ -5,18 +5,22 @@ using System.Web.Http;
 using ToSic.SexyContent.WebApi;
 using System.Collections.Generic;
 using System;
+using System.Net;
+using System.Net.Http;
 using System.Linq;
-using System.Web.Compilation;
-using System.Runtime.CompilerServices;
-using DotNetNuke.Services.Mail;
-using Newtonsoft.Json;
+//using System.Web.Compilation;
+//using System.Runtime.CompilerServices;
+// using DotNetNuke.Services.Mail;
+// using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+
 
 public class RedirectController : SxcApiController
 {
     [AllowAnonymous] 
 	[HttpGet]
     [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
-    public string Go(string key, string domain = "", string full = null)
+    public HttpResponseMessage Go(string key, string domain = null, string url = null, bool debug = false)
     {
         // lower the key, just to be sure
         key = key.ToLower();
@@ -24,7 +28,7 @@ public class RedirectController : SxcApiController
         // 1. get all links
         var all = AsDynamic(App.Data["Link"]);
 
-        // 2. try to find the key all lower case (assumes that the system is case-insensitive)
+        // 2. try to find the key all lower case (assumes that the system is all lower-case & case-insensitive)
         var current = all.FirstOrDefault(l => l.Key == key);
 
         if(current == null)
@@ -36,19 +40,62 @@ public class RedirectController : SxcApiController
         if(current.Retired != null && current.Retired)
             return GoToDefault(key);
 
+        // decide what to do with the link / how to handle it
+        var link = current.Link;
+        var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();
+        var mode = grp != null ? grp.RedirectType : "default";
+        var forward = grp != null ? grp.ForwardHandler : "";
+
+
+        if(mode == "forward" && !String.IsNullOrEmpty(forward))
+            link = ReplaceCaseInsensitive(forward, "{link}", link);
+
+        // now inject various patters as needed
+        link = ReplaceCaseInsensitive(link, "{key}", key);
+        link = ReplaceCaseInsensitive(link, "{domain}", domain);
+        link = ReplaceCaseInsensitive(link, "{url}", url);
+
         // todo: maybe log?
 
+
+
         // redirect
-        Response.Redirect(current.Link);
+        if(debug)
+            return Message("debug: would redirect to " + link);
+        else
+            return  Redirect(link);
     }
 
-    private string GoToDefault(string key) {
+
+    private HttpResponseMessage GoToDefault(string key) {
         var fallback = App.Settings.FallbackLink;
         if(fallback == null)
             throw new Exception("can't find real link and fallback fails too");
 
-        return fallback;
+        return Message(fallback);
     }
 
+    private HttpResponseMessage Message(string message){
+        var response = Request.CreateResponse(HttpStatusCode.OK, message);
+        //response.Content = message;
+        return response;
+    }
+
+    private HttpResponseMessage Redirect(string link){
+        // now redirect
+        var response = Request.CreateResponse(HttpStatusCode.Moved);
+        response.Headers.Location = new Uri(link);
+        return response;
+    }
+
+    private static string ReplaceCaseInsensitive(string input, string search, string replacement){
+        string result = Regex.Replace(
+            input ?? "",
+            Regex.Escape(search ?? ""), 
+            (replacement ?? "").Replace("$","$$"), 
+            RegexOptions.IgnoreCase
+        );
+        return result;
+    }
 
 }
