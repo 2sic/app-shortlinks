@@ -1,6 +1,5 @@
 todo<br>
-retired / fallback<br>
-setup web.config<br>
+test setup web.config<br>
 
 
 <h1>Short Link Manager</h1>
@@ -50,4 +49,28 @@ setup web.config<br>
         <li></li>
     </ol>
 
+</div>
+
+<div>
+    <h2>Suggestion for Web.Config enhancements</h2>
+    Place this in the tag configuration &gt; rewrite &gt; rules <br>
+
+    <textarea rows="15" cols="120">
+    <configuration>
+        ...
+        <rewrite>
+            ...
+        <rules>
+            ...
+            <rule name="Rewrite all @App.Settings.ShortDomain/xyz to web service" stopProcessing="true">
+                <match url="^([A-Za-z0-9]{1,3})$" />
+                <conditions>
+                    <add input="{HTTP_HOST}" pattern="^(www\.)?@(App.Settings.ShortDomain.Replace(".", "\\."))(:[0-9]+)??$" ignoreCase="true" />
+                </conditions>
+                <!-- this is the case if you're addressing the app in the main portal -->
+                <action type="Redirect" url="/desktopmodules/2sxc/api/app/ShortLinks/api/redirect/go?key={R:1}" />
+                <!-- this is how it would be for a sub-portal with the name "subportal" -->
+                <!-- <action type="Redirect" url="/shortlinks/desktopmodules/2sxc/api/app/ShortLinks/api/redirect/go?key={R:1}" /> -->
+            </rule>
+    </textarea>
 </div>

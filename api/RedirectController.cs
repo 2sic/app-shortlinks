@@ -26,51 +26,39 @@ public class RedirectController : SxcApiController
         // 2. try to find the key all lower case (assumes that the system is all lower-case & case-insensitive)
         var current = all.FirstOrDefault(l => l.Key == key);
 
+        // not found - redirect to fallback
+        var link = "";
         if(current == null)
-            return GoToDefault(key);
+            link = App.Settings.FallbackLink;
+        else {
+            link = current.Link;
+
+            // 5. if yes and retired: use redirect to app-setting
+            if(current.Retired != null && current.Retired)
+                link = App.Settings.RetiredLink;
+
+            // decide what to do with the link / how to handle it
+            var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();
+            var mode = grp != null ? grp.RedirectType : "default";
+            string forward = grp != null ? grp.ForwardHandler.ToString() : "";
 
 
-        var link = current.Link;
-
-        // todo: 
-        // 4. if yes and not retired: redirect
-        // 5. if yes and retired: redirect to app-setting
-        if(current.Retired != null && current.Retired)
-            link = App.Settings.RetiredLink;
-
-        // decide what to do with the link / how to handle it
-        var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();
-        var mode = grp != null ? grp.RedirectType : "default";
-        string forward = grp != null ? grp.ForwardHandler.ToString() : "";
-
-
-        if(mode == "forward" && !String.IsNullOrEmpty(forward))
-            link = ReplaceCI(forward, "{link}", link);
+            if(mode == "forward" && !String.IsNullOrEmpty(forward))
+                link = ReplaceCI(forward, "{link}", link);
+        }
 
         // now inject various patters as needed
         link = ReplaceCI(link, "{key}", key);
         link = ReplaceCI(link, "{domain}", domain);
         link = ReplaceCI(link, "{url}", url);
 
-        // todo: maybe log?
-
-
-
         // redirect
         if(debug)
             return Message("debug: would redirect to " + link);
         else
-            return  Redirect(link);
+            return Redirect(link);
     }
 
-
-    private HttpResponseMessage GoToDefault(string key) {
-        var fallback = App.Settings.FallbackLink;
-        if(fallback == null)
-            throw new Exception("can't find real link and fallback fails too");
-
-        return Message(fallback);
-    }
 
     private HttpResponseMessage Message(string message){
         var response = Request.CreateResponse(HttpStatusCode.OK, message);
