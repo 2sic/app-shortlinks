@@ -2,15 +2,14 @@
     var all = AsDynamic(Data["Links"]);
     var newKey = GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, true);
 
-    string hashPlaceholder = "#";
-
+    // path to qr-code generator
     var qrPath = "http://api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone=1&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}"
         .Replace("{foreground}", App.Settings.QrForegroundColor.Replace("#", ""))
         .Replace("{background}", App.Settings.QrBackgroundColor.Replace("#", ""))
         .Replace("{dim}", App.Settings.QrDimension.ToString())
         .Replace("{ecc}", App.Settings.QrEcc);
-        
-    var keyPlaceholder = "{key}";
+
+    var rootPath = App.Settings.Protocol + App.Settings.ShortDomain + "/";
 }
 <div class="sc-element">
 @Edit.Toolbar()
@@ -27,11 +26,11 @@
     </tr>
 
     @foreach(var link in all) {
-        var full = App.Settings.Protocol + App.Settings.ShortDomain + "/" + link.Key;
+        var full = rootPath + link.Key;
         var qr = qrPath.Replace("{link}", full);
         <tr>
             <td>
-                <a onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
+                <a href="javascript:;" onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
                     @link.Key
                 </a>
             </td>
@@ -68,18 +67,19 @@
 @Edit.Toolbar(actions: "new", contentType: "Link", prefill: new { Key = newKey }) for @newKey
 </div>
 
+
+<p>
+    <br><br>
+    <em>
+        Setup note: make sure you have configured the web.config - instructions <a href="@Link.To(parameters: "webconfig=true")">here</a>
+    </em>
+</p>
 @functions {
     // try to generate a good web-api test-link
 
     public string TestLink(string key){
         return "/shortlinks/desktopmodules/2sxc/api/app/ShortLinks/api/Redirect/Go?key=" + key;
-        return "testing...";
-        // return Url.Link("DefaultApi", new { id = 3 }); //.RouteUrl("DefaultApi", new { httproute=true, controller="Albums", id=3});
-        // return DotNetNuke.Web.Api.UrlHelperExtensions.DnnLink(new System.Web.Http.Routing.UrlHelper(Request), "2sxc", "api/ShortLink/Redirect", new { key = key});
     }
-
-
-    
 
 }
 

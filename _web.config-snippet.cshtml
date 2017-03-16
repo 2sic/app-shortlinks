@@ -1,0 +1,17 @@
+<div>
+<h2>Snippet to insert into web.config</h2>
+<p>This snippet is what you need to insert into the web.config in the right place. When looking at this in a browser, the important spots already contain the domain etc. which should be monitored. So assuming you configured the app-settings correctly, then just copy/paste :) </p>
+
+<p>Place this in &lt;configuration&gt; &lt;rewrite&gt; &lt;rules&gt;</p>
+    <textarea rows="15" cols="120">
+            <rule name="Rewrite all @App.Settings.ShortDomain/xyz to web service" stopProcessing="true">
+                <match url="^([A-Za-z0-9]{1,3})$" />
+                <conditions>
+                    <add input="{HTTP_HOST}" pattern="^(www\.)?@(App.Settings.ShortDomain.Replace(".", "\\."))(:[0-9]+)??$" ignoreCase="true" />
+                </conditions>
+                <!-- note that the root path can have subportal name in it - if the app is installed in a sub-portal -->
+                <!-- note also that in DNN9, the root path (after the sub-portal) is not desktopmodules/2sxc/api but instead /api/2sxc -->
+                <action type="Redirect" url="@DotNetNuke.Framework.ServicesFramework.GetServiceFrameworkRoot()desktopmodules/2sxc/api/app/shortlinks/api/redirect/go?key={R:1}" />
+            </rule>
+    </textarea>
+</div>
