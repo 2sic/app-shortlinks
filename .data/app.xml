@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-15T23:05:43.1540088+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-16T09:53:33.5328749+01:00">
   <Header>
     <App Guid="6b607276-63cf-4c9c-be39-73ec66d7f7fb" />
     <Language Default="en-US" />
@@ -391,7 +391,7 @@
     <Entity AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="0f464cd3-8a97-454d-b594-72c8cb767174" KeyNumber="58">
       <Value Key="DisplayName" Value="Short Links Management" Type="String" />
       <Value Key="Description" Value="A simple app to manage short-links, typical for marketing and qr-codes" Type="String" />
-      <Value Key="Version" Value="00.02.00" Type="String" />
+      <Value Key="Version" Value="01.00.00" Type="String" />
       <Value Key="Folder" Value="ShortLinks" Type="String" />
       <Value Key="AllowTokenTemplates" Value="False" Type="Boolean" />
       <Value Key="AllowRazorTemplates" Value="True" Type="Boolean" />
@@ -489,9 +489,9 @@
       <Value Key="Group" Value="e8213a14-a764-408a-8b85-739541279edd" Type="Entity" />
       <Value Key="Notes" Value="" Type="String" />
     </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="f1fcc712-b64d-46b9-a6ff-65229c96faa7">
-      <Value Key="Name" Value="Instructions" Type="String" />
-      <Value Key="Path" Value="_Instructions.cshtml" Type="String" />
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="55e0fd02-2d05-481d-a455-b08d5ec35598">
+      <Value Key="Name" Value="Web.Config Snippet" Type="String" />
+      <Value Key="Path" Value="_web.config-snippet.cshtml" Type="String" />
       <Value Key="ContentTypeStaticName" Value="" Type="String" />
       <Value Key="ContentDemoEntity" Value="" Type="Entity" />
       <Value Key="PresentationTypeStaticName" Value="" Type="String" />
@@ -507,7 +507,7 @@
       <Value Key="PublishData" Value="False" Type="Boolean" />
       <Value Key="StreamsToPublish" Value="" Type="String" />
       <Value Key="Pipeline" Value="" Type="Entity" />
-      <Value Key="ViewNameInUrl" Value="" Type="String" />
+      <Value Key="ViewNameInUrl" Value="webconfig/.*" Type="String" />
     </Entity>
   </Entities>
   <PortalFiles />
