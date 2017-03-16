@@ -1,3 +1,4 @@
+<img align="right" src="app-icon.png" width="200px">
 # ShortLink App for DNN - The Quick-Links Manager
 Basically this is a URL shortener, similar to bit.ly or goo.gl - except that it's on your site, and under your control. The core features are:
     
