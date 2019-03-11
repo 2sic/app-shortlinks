@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="08.12.00" ExportDate="2017-03-16T09:53:33.5328749+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="09.42.00" ExportDate="2019-03-11T16:27:52.8318878+01:00">
   <Header>
     <App Guid="6b607276-63cf-4c9c-be39-73ec66d7f7fb" />
     <Language Default="en-US" />
-    <Dimensions />
+    <Dimensions>
+      <Dimension DimensionID="129" Name="English (United States)" SystemKey="" ExternalKey="en-US" Active="true" />
+      <Dimension DimensionID="130" Name="Deutsch (Deutschland)" SystemKey="" ExternalKey="de-DE" Active="true" />
+    </Dimensions>
   </Header>
   <AttributeSets>
     <AttributeSet StaticName="App-Resources" Name="App-Resources" Description="Stores resources like translations for an app" Scope="2SexyContent-App" AlwaysShareConfiguration="false">
@@ -11,230 +14,439 @@
     </AttributeSet>
     <AttributeSet StaticName="App-Settings" Name="App-Settings" Description="Stores settings for an app" Scope="2SexyContent-App" AlwaysShareConfiguration="false">
       <Attributes>
+        <Attribute StaticName="General" Type="Empty" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="dd0e32f7-6c3a-482e-89cf-65bec02112cc" KeyNumber="2900">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="General Settings" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="8b388de1-7b2f-4263-b74e-18391ca1a102" KeyNumber="2900">
+            <Value Key="DefaultCollapsed" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="ConfigurationComplete" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="5bbd7e28-8198-4752-b816-d935907f1937" KeyNumber="2901">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Configuration Complete" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;This is false by default, and when the person setting up the system thinks all is good (web.config is done, settings are correct), set it to true.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="8b8d68e6-83b8-440c-a048-2a483c270390" KeyNumber="2901" />
+        </Attribute>
         <Attribute StaticName="GroupTesting" Type="Empty" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="2815f250-907a-494c-8d1b-00014df22769" KeyNumber="1202">
-            <Value Key="Name" Value="Settings for Test-Links" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;When managing the links, you may want to test a redirect. For this to work, this app must know what link you will use in front of the keys, as they are often different from your main domain (usually shorter).&amp;nbsp;&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="4252afe6-7065-4a30-b9ee-d21e41fd27b7" KeyNumber="2871">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="empty-default" Type="String" />
+            <Value Key="Name" Value="Settings for Test-Links" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;When managing the links, you may want to test a redirect. For this to work, this app must know what link you will use in front of the keys, as they are often different from your main domain (usually shorter).&amp;nbsp;&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="1f1ba849-32d5-4437-ba74-6566af6b4951" KeyNumber="1202">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="1f1ba849-32d5-4437-ba74-6566af6b4951" KeyNumber="2871">
             <Value Key="DefaultCollapsed" Value="False" Type="Boolean" />
           </Entity>
         </Attribute>
         <Attribute StaticName="ShortDomain" Type="String" IsTitle="true">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="f1b504fe-f93c-4d99-abf0-6e86eda5c68b" KeyNumber="1185">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b0df6cd3-f157-4bb8-91d0-77f9162afbc8" KeyNumber="2872">
+            <Value Key="DefaultValue" Value="" Type="String" />
+            <Value Key="Disabled" Value="False" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
             <Value Key="Name" Value="Short Domain" Type="String" />
             <Value Key="Notes" Value="&lt;p&gt;The short domain which we'll probably use&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
             <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="" Type="String" />
-            <Value Key="Disabled" Value="False" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="731569bf-8a6c-44ea-9e40-8fbcfcd611da" KeyNumber="1185" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="a4a18ac6-8016-4b00-b6db-c342f459161b" KeyNumber="1185">
-            <Value Key="RowCount" Value="" Type="Number" />
-          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="731569bf-8a6c-44ea-9e40-8fbcfcd611da" KeyNumber="2872" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="a4a18ac6-8016-4b00-b6db-c342f459161b" KeyNumber="2872" />
         </Attribute>
         <Attribute StaticName="Protocol" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="0b3a440b-02cd-4c83-a43e-3cab4525b99f" KeyNumber="1198">
-            <Value Key="Name" Value="Protocol" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;used for testing the links - typically http://&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="http://" Type="String" />
-            <Value Key="Disabled" Value="False" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="8318624c-5f61-4c90-aa98-f66f697949c7" KeyNumber="2873">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="http://" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Protocol" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;used for testing the links - typically http://&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="5b88b938-8c77-42b7-8b38-52dbcaa4a9ea" KeyNumber="1198" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="b18a75a0-dcb0-4a00-8966-cf9d8b25d8e5" KeyNumber="1198">
-            <Value Key="RowCount" Value="" Type="Number" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="5b88b938-8c77-42b7-8b38-52dbcaa4a9ea" KeyNumber="2873">
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="b18a75a0-dcb0-4a00-8966-cf9d8b25d8e5" KeyNumber="2873" />
         </Attribute>
         <Attribute StaticName="GroupGenerate" Type="Empty" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="66e53248-c027-4ed9-a375-4f22eb20deee" KeyNumber="1203">
-            <Value Key="Name" Value="Key Generator" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;The following settings are for the key-generator, which randomly generates new keys for your next short-link.&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="" Type="String" />
-            <Value Key="Disabled" Value="False" Type="Boolean" />
-            <Value Key="InputType" Value="empty-default" Type="String" />
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="7dbcf03e-73c4-47ca-8491-7665ebdd66e2" KeyNumber="2874">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Key Generator Settings" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;The following settings are for the key-generator, which randomly generates new keys for your next short-link.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="48ae307e-8be2-418b-b0eb-e10232dcc1b1" KeyNumber="1203">
-            <Value Key="DefaultCollapsed" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="48ae307e-8be2-418b-b0eb-e10232dcc1b1" KeyNumber="2874">
+            <Value Key="DefaultCollapsed" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
         <Attribute StaticName="GenerateKeyLength" Type="Number" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="e6ba4b61-7458-4d39-8461-e0c51a21430f" KeyNumber="1186">
-            <Value Key="Name" Value="Key Length to generate" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;The key length - you usually want to limit this either to 3 or another short value, to make it type-able&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="f461ce80-13cc-4bc7-a9b6-2db3049d7bc7" KeyNumber="2875">
             <Value Key="DefaultValue" Value="3" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="number-default" Type="String" />
+            <Value Key="Name" Value="Key Length to generate" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;The key length - you usually want to limit this either to 3 or another short value, to make it type-able&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="a0e25664-0e42-4606-af3e-490e3aa05a64" KeyNumber="1186">
-            <Value Key="Decimals" Value="0" Type="Number" />
-            <Value Key="Min" Value="" Type="Number" />
-            <Value Key="Max" Value="" Type="Number" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="a0e25664-0e42-4606-af3e-490e3aa05a64" KeyNumber="2875">
+            <Value Key="Decimals" Value="0.0" Type="Number" />
           </Entity>
         </Attribute>
         <Attribute StaticName="GenerateKeyPrefix" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="41483d0d-483a-4a68-a539-549514769dff" KeyNumber="1187">
-            <Value Key="Name" Value="Key Prefix in generated url" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Will auto-prepend this into all generated links.&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b457a22d-cf54-49b1-b577-2798240058ba" KeyNumber="2876">
             <Value Key="DefaultValue" Value="q" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Key Prefix in generated url" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;Will auto-prepend this into all generated links.&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="962796bb-aa7a-4abf-9360-8013dad32fca" KeyNumber="1187" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="34ac5267-3ba7-41a5-9d76-89565594c6a2" KeyNumber="1187">
-            <Value Key="RowCount" Value="" Type="Number" />
-          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="962796bb-aa7a-4abf-9360-8013dad32fca" KeyNumber="2876" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="34ac5267-3ba7-41a5-9d76-89565594c6a2" KeyNumber="2876" />
         </Attribute>
         <Attribute StaticName="GroupLinks" Type="Empty" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c2c1270a-627e-4abc-94e1-1309d4d83769" KeyNumber="1204">
-            <Value Key="Name" Value="GroupLinks" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="empty-default" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c99b3791-839e-45c6-aa55-6d7876d66102" KeyNumber="2877">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Links Settings" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="d8b95b62-d466-423b-83bd-ddd132085568" KeyNumber="2877">
+            <Value Key="DefaultCollapsed" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
-        <Attribute StaticName="RetiredLink" Type="Hyperlink" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="a8d0bf4f-ecb6-4f12-b4a2-48a39e8d8e62" KeyNumber="1197">
-            <Value Key="Name" Value="Retired Link" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Redirect people to here if a link has become invalid&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+        <Attribute StaticName="TargetDomain" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="3e56a958-1084-49b0-9c4b-321b42f349eb" KeyNumber="2878">
+            <Value Key="DefaultValue" Value="" Type="String" />
+            <Value Key="Disabled" Value="False" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Target Domain" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;The domain the links will point to if they were relative. Leave blank to stay in this domain, but often it's a longer domain as the short-links typically use a cryptic domain.&amp;nbsp;&lt;/p&gt;" Type="String" />
             <Value Key="Required" Value="False" Type="Boolean" />
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="34d2c15f-9ad3-408e-9fe7-efa4cd578911" KeyNumber="2878" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="14ab88b8-e8dc-422f-8cd2-45819ed373c4" KeyNumber="2878" />
+        </Attribute>
+        <Attribute StaticName="TargetProtocol" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="d2867c25-cf83-4ba3-98dc-7454e511e911" KeyNumber="2879">
+            <Value Key="DefaultValue" Value="" Type="String" />
+            <Value Key="Disabled" Value="False" Type="Boolean" />
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Target Protocol" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;This is the protocol used to redirect relative links.&amp;nbsp;&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="201c30f9-ceb2-4a40-8391-f70d5f931919" KeyNumber="2879" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="b5cd3617-c07c-413f-90de-981294fd7d4f" KeyNumber="2879" />
+        </Attribute>
+        <Attribute StaticName="RetiredLink" Type="Hyperlink" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="4cc2a803-b1b4-45c2-be68-b7d40066f21d" KeyNumber="2880">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="hyperlink-default" Type="String" />
+            <Value Key="Name" Value="Retired Link" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;Redirect people to here if a link has become invalid&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="e8a324d7-8e01-4115-a6a9-1a80fdcd05fc" KeyNumber="1197">
-            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
-            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
-            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
-            <Value Key="Paths" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="e8a324d7-8e01-4115-a6a9-1a80fdcd05fc" KeyNumber="2880">
+            <Value Key="Buttons" Value="adam,more" Type="String" />
             <Value Key="DefaultDialog" Value="" Type="String" />
             <Value Key="FileFilter" Value="" Type="String" />
+            <Value Key="Paths" Value="" Type="String" />
             <Value Key="ShowAdam" Value="True" Type="Boolean" />
-            <Value Key="Buttons" Value="adam,more" Type="String" />
+            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
+            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
+            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
           </Entity>
         </Attribute>
         <Attribute StaticName="FallbackLink" Type="Hyperlink" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="d2225ae3-82fb-4981-a324-056b824a6733" KeyNumber="1199">
-            <Value Key="Name" Value="Fallback Link" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c6bae2e5-d85c-4bfe-9412-94d977334e70" KeyNumber="2881">
             <Value Key="DefaultValue" Value="/" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="hyperlink-default" Type="String" />
+            <Value Key="Name" Value="Fallback Link" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="5343dfb0-6367-4b6d-a9d2-7d0dc11826ad" KeyNumber="1199">
-            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
-            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
-            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
-            <Value Key="Paths" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="5343dfb0-6367-4b6d-a9d2-7d0dc11826ad" KeyNumber="2881">
+            <Value Key="Buttons" Value="adam,more" Type="String" />
             <Value Key="DefaultDialog" Value="" Type="String" />
             <Value Key="FileFilter" Value="" Type="String" />
+            <Value Key="Paths" Value="" Type="String" />
             <Value Key="ShowAdam" Value="True" Type="Boolean" />
-            <Value Key="Buttons" Value="adam,more" Type="String" />
+            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
+            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
+            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
           </Entity>
         </Attribute>
         <Attribute StaticName="GroupQR" Type="Empty" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b1e2a247-6c82-4d65-8a0e-1a3803c4320f" KeyNumber="1205">
-            <Value Key="Name" Value="QR Generator Settings" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="fbb4d7be-bb8b-40f6-9d8d-ec958c43fe90" KeyNumber="2882">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="empty-default" Type="String" />
+            <Value Key="Name" Value="QR Generator Settings" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="dd22e5b1-3bf6-440b-bd46-7de460734e4d" KeyNumber="1205">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="dd22e5b1-3bf6-440b-bd46-7de460734e4d" KeyNumber="2882">
             <Value Key="DefaultCollapsed" Value="False" Type="Boolean" />
           </Entity>
         </Attribute>
         <Attribute StaticName="QrBackgroundColor" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="95311058-d64e-4313-8f2b-730234b3ac9b" KeyNumber="1206">
-            <Value Key="Name" Value="Background Color" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b889398d-9621-4887-b05c-89bd2514e3cf" KeyNumber="2883">
             <Value Key="DefaultValue" Value="#FFFFFF" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Background Color" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="ea3651d1-cbfd-498a-b694-2c22f140cafc" KeyNumber="1206" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="1d5b6dba-6674-4f9b-adbd-0177166321e1" KeyNumber="1206">
-            <Value Key="RowCount" Value="" Type="Number" />
-          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="ea3651d1-cbfd-498a-b694-2c22f140cafc" KeyNumber="2883" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="1d5b6dba-6674-4f9b-adbd-0177166321e1" KeyNumber="2883" />
         </Attribute>
         <Attribute StaticName="QrForegroundColor" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="07ff90cb-a008-4f93-b813-9a29e57f0bdd" KeyNumber="1207">
-            <Value Key="Name" Value="Foreground Color" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="92bc9618-2adf-44a5-8cca-e7b1266b50ee" KeyNumber="2884">
             <Value Key="DefaultValue" Value="#000000" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Foreground Color" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="bd1e536a-4b21-4d7d-98bd-02a7cc4cd69f" KeyNumber="1207" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="2bcb5e72-ef3a-45b2-99b4-dde59c24e9e4" KeyNumber="1207">
-            <Value Key="RowCount" Value="" Type="Number" />
-          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="bd1e536a-4b21-4d7d-98bd-02a7cc4cd69f" KeyNumber="2884" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="2bcb5e72-ef3a-45b2-99b4-dde59c24e9e4" KeyNumber="2884" />
         </Attribute>
         <Attribute StaticName="QrDimension" Type="Number" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="f5db724f-3a32-4673-b7bb-157d8afd13b8" KeyNumber="1208">
-            <Value Key="Name" Value="Dimension" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Width &amp;amp; height will both be this size&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
-            <Value Key="DefaultValue" Value="200" Type="String" />
-            <Value Key="Disabled" Value="False" Type="Boolean" />
-            <Value Key="InputType" Value="number-default" Type="String" />
-            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="664851fd-90b3-4a3e-8c43-beb8107441b7" KeyNumber="2885">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="200" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="number-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Dimension/Size (px)" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Width &amp;amp; height will both be this size&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="5fe3f6aa-16bf-4980-8329-203754620866" KeyNumber="1208">
-            <Value Key="Decimals" Value="0" Type="Number" />
-            <Value Key="Min" Value="" Type="Number" />
-            <Value Key="Max" Value="" Type="Number" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="5fe3f6aa-16bf-4980-8329-203754620866" KeyNumber="2885">
+            <Value Key="AddressMask" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Decimals" Value="0.0" Type="Number">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegEx" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
           </Entity>
         </Attribute>
         <Attribute StaticName="QrEcc" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="34c85f23-7278-464f-b2bb-432d45d4bd4e" KeyNumber="1209">
-            <Value Key="Name" Value="Error Correction" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;This is how much error-correction is built into the image. We recommend to use the lowest value, as more error correction actually makes the QR harder to scan.&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="ceecf3df-536a-406a-8d58-d8dc84e24970" KeyNumber="2886">
             <Value Key="DefaultValue" Value="l" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="string-dropdown" Type="String" />
+            <Value Key="Name" Value="Error Correction" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;This is how much error-correction is built into the image. We recommend to use the lowest value, as more error correction actually makes the QR harder to scan.&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="569b8292-7c46-4f47-bb16-5f5ab093fa2c" KeyNumber="1209" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="10c6aef2-532a-4913-aa5d-e971ac8ede2b" KeyNumber="1209">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="569b8292-7c46-4f47-bb16-5f5ab093fa2c" KeyNumber="2886" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="10c6aef2-532a-4913-aa5d-e971ac8ede2b" KeyNumber="2886">
             <Value Key="DropdownValues" Value="Low (recommended):l&#xA;Medium:m&#xA;High:h" Type="String" />
+          </Entity>
+        </Attribute>
+      </Attributes>
+    </AttributeSet>
+    <AttributeSet StaticName="76da0325-7514-410f-8e39-93119464c8e5" Name="GeneratorConfig" Description="" Scope="2SexyContent" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="Title" Type="String" IsTitle="true">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="a32efa50-7877-4832-9fa7-b029061cfbb5" KeyNumber="2887">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Title" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Prefix" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="89c14211-9ef1-4dd2-9845-fc45e24b07ba" KeyNumber="2888">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Prefix" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
         </Attribute>
       </Attributes>
@@ -242,229 +454,399 @@
     <AttributeSet StaticName="56185dad-c20f-43f1-be57-dbdb9d87f0fb" Name="Group" Description="Link groups" Scope="2SexyContent" AlwaysShareConfiguration="false">
       <Attributes>
         <Attribute StaticName="Title" Type="String" IsTitle="true">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="eb096d35-46b1-4b76-a471-74f9e25d98c9" KeyNumber="1189">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="e5be1620-a91b-4487-a774-78a78d5b33a8" KeyNumber="2889">
+            <Value Key="InputType" Value="string-default" Type="String" />
             <Value Key="Name" Value="Title" Type="String" />
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
           </Entity>
         </Attribute>
         <Attribute StaticName="Description" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="5e7f8c90-d834-49b1-8b70-eb0418d7f009" KeyNumber="1190">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="b8d782ac-c3b0-44cc-a0c7-23273543f7d8" KeyNumber="2890">
+            <Value Key="InputType" Value="string-default" Type="String" />
             <Value Key="Name" Value="Description" Type="String" />
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-default" Type="String" />
           </Entity>
         </Attribute>
         <Attribute StaticName="RedirectType" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="2c8a1734-4e5e-48c4-a3ff-4b91c393785a" KeyNumber="1200">
-            <Value Key="Name" Value="Redirect Type" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Determines how the redirect should happen - directly, or through another redirect handler.&amp;nbsp;&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="7b703e3b-ac7c-4f61-bcc5-3b52b76ab3ed" KeyNumber="2891">
             <Value Key="DefaultValue" Value="default" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="string-dropdown" Type="String" />
+            <Value Key="Name" Value="Redirect Type" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;Determines how the redirect should happen - directly, or through another redirect handler.&amp;nbsp;&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="df70729e-4c72-45d4-b25b-415fed07023c" KeyNumber="1200" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="38eed603-05d9-4760-8127-b33ffee50912" KeyNumber="1200">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="df70729e-4c72-45d4-b25b-415fed07023c" KeyNumber="2891" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="38eed603-05d9-4760-8127-b33ffee50912" KeyNumber="2891">
             <Value Key="DropdownValues" Value="Default - just redirect:default&#xA;Forward to another redirection:forward" Type="String" />
           </Entity>
         </Attribute>
+        <Attribute StaticName="GroupForward" Type="Empty" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="baa545c3-1104-4c74-b08e-822c9ad6e1f9" KeyNumber="2902">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Forwarding Settings if all are Forwarded" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;If the above setting says to forward all in this group, here you can set where it is forwarded to.&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="1c262b4d-1efd-4daf-b602-ffb1560e4c78" KeyNumber="2902">
+            <Value Key="DefaultCollapsed" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
         <Attribute StaticName="ForwardHandler" Type="Hyperlink" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="47e969f5-f717-4948-9e10-eedfb6686576" KeyNumber="1201">
-            <Value Key="Name" Value="Next Handler" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;Necessary if the link / key should be forwarded&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="e4ffa059-345c-482f-a840-56d07e238a71" KeyNumber="2892">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="hyperlink-default" Type="String" />
+            <Value Key="Name" Value="Next Handler" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;Necessary if the link / key should be forwarded&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="7b26b71c-cd0c-4f30-bca3-b095df62c07d" KeyNumber="1201">
-            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
-            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
-            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
-            <Value Key="Paths" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="7b26b71c-cd0c-4f30-bca3-b095df62c07d" KeyNumber="2892">
+            <Value Key="Buttons" Value="adam,more" Type="String" />
             <Value Key="DefaultDialog" Value="" Type="String" />
             <Value Key="FileFilter" Value="" Type="String" />
+            <Value Key="Paths" Value="" Type="String" />
             <Value Key="ShowAdam" Value="True" Type="Boolean" />
-            <Value Key="Buttons" Value="adam,more" Type="String" />
+            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
+            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
+            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
           </Entity>
+        </Attribute>
+        <Attribute StaticName="GroupRetired" Type="Empty" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="ce812ac0-474a-41ed-a60f-41556eece7ab" KeyNumber="2903">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Retired Links Settings" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;If a shortlink in this group is retired, you can override the default location, where it is routed to for showing the retired /archived message. If you leave this empty, the App Setting will be used.&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="7a147c36-0dc8-4cc2-9af5-6dab9a2444f8" KeyNumber="2903">
+            <Value Key="DefaultCollapsed" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="ForwardRetired" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="eff5aa9f-8d8b-4d05-b59f-6bee00cebb01" KeyNumber="2904">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Forward Retired Links URL" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Use the url pattern with the&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="93c93abe-0b4f-4c9a-bb98-d0ea89683080" KeyNumber="2904">
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="cee75c63-ac4c-46fd-9f8d-663839bc85ae" KeyNumber="2904" />
         </Attribute>
       </Attributes>
     </AttributeSet>
     <AttributeSet StaticName="02fb3b0d-4cbe-467f-9edf-50c97ebcbc8f" Name="Link" Description="Link definition" Scope="2SexyContent" AlwaysShareConfiguration="false">
       <Attributes>
-        <Attribute StaticName="Key" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="08df7fda-3a08-439a-a825-63efe30d0498" KeyNumber="1191">
-            <Value Key="Name" Value="Key" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="True" Type="Boolean" />
+        <Attribute StaticName="Key" Type="String" IsTitle="true">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="7833e167-8d7a-44a4-a2fa-9e8b3c3ef816" KeyNumber="2893">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="True" Type="Boolean" />
             <Value Key="InputType" Value="string-url-path" Type="String" />
+            <Value Key="Name" Value="Key" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="True" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="afc769f0-3cfe-4a17-af78-1d6bf2fef88b" KeyNumber="1191" />
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-url-path" AttributeSetName="@string-url-path" EntityGUID="34cca4d8-7b98-42b4-a7af-300bd7514dd3" KeyNumber="1191">
-            <Value Key="AutoGenerateMask" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="afc769f0-3cfe-4a17-af78-1d6bf2fef88b" KeyNumber="2893" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-url-path" AttributeSetName="@string-url-path" EntityGUID="34cca4d8-7b98-42b4-a7af-300bd7514dd3" KeyNumber="2893">
             <Value Key="AllowSlashes" Value="False" Type="Boolean" />
+            <Value Key="AutoGenerateMask" Value="" Type="String" />
           </Entity>
         </Attribute>
         <Attribute StaticName="Link" Type="Hyperlink" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="8ba69401-8144-4678-ba15-2cca170ac057" KeyNumber="1192">
-            <Value Key="Name" Value="Link Target" Type="String" />
-            <Value Key="Notes" Value="&lt;p&gt;This is where it should go. Can also contain placeholders like {key}, {domain}, {url} which will be replaced with the real value before redirecting.&amp;nbsp;&lt;/p&gt;" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="5707f0ac-93f5-42ef-b800-66c4f8432b7f" KeyNumber="2894">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="hyperlink-default" Type="String" />
+            <Value Key="Name" Value="Link Target" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;This is where it should go. Can also contain placeholders like {key}, {domain}, {url} which will be replaced with the real value before redirecting.&amp;nbsp;&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="112ff8da-4498-4aec-8e44-3828aacc9233" KeyNumber="1192">
-            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
-            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
-            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
-            <Value Key="Paths" Value="" Type="String" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Hyperlink" AttributeSetName="@Hyperlink" EntityGUID="112ff8da-4498-4aec-8e44-3828aacc9233" KeyNumber="2894">
+            <Value Key="Buttons" Value="adam,more" Type="String" />
             <Value Key="DefaultDialog" Value="" Type="String" />
             <Value Key="FileFilter" Value="" Type="String" />
+            <Value Key="Paths" Value="" Type="String" />
             <Value Key="ShowAdam" Value="True" Type="Boolean" />
-            <Value Key="Buttons" Value="adam,more" Type="String" />
+            <Value Key="ShowFileManager" Value="False" Type="Boolean" />
+            <Value Key="ShowImageManager" Value="False" Type="Boolean" />
+            <Value Key="ShowPagePicker" Value="False" Type="Boolean" />
           </Entity>
         </Attribute>
-        <Attribute StaticName="Title" Type="String" IsTitle="true">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="45e5e834-2dd9-4036-a101-932f5ab864e1" KeyNumber="1193">
-            <Value Key="Name" Value="Title" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+        <Attribute StaticName="OLDTitle" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="60b55e26-7033-4198-bf7d-36996beb8a9a" KeyNumber="2895">
+            <Value Key="DefaultValue" Value="" Type="String" />
+            <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Notes" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="a06babae-3c49-4287-b9eb-00e75b7f5b9d" KeyNumber="2895" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="266e7453-450b-42fd-ba6b-a189bdedba4f" KeyNumber="2895" />
+        </Attribute>
+        <Attribute StaticName="Show" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="9b9cea6a-073e-4ba9-a13c-1f3813040090" KeyNumber="2896">
+            <Value Key="DefaultValue" Value="True" Type="String" />
+            <Value Key="Disabled" Value="False" Type="Boolean" />
+            <Value Key="InputType" Value="boolean-default" Type="String" />
+            <Value Key="Name" Value="Show" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;show this link to visitors for sharing etc.&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="e5febd00-d370-42dd-875b-e4e9ac429620" KeyNumber="2896" />
         </Attribute>
         <Attribute StaticName="Retired" Type="Boolean" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="404d7547-2a4c-4c07-9b00-44b6a2982b96" KeyNumber="1194">
-            <Value Key="Name" Value="Retired" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c003bb1c-2821-426d-93f2-c9f4d86969d5" KeyNumber="2897">
             <Value Key="DefaultValue" Value="false" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="boolean-default" Type="String" />
+            <Value Key="Name" Value="Retired" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;a retired link will stop working and redirect to the home page&lt;/p&gt;" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="0d5813e5-21d3-41f6-96da-0bf21b22cb79" KeyNumber="1194" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="0d5813e5-21d3-41f6-96da-0bf21b22cb79" KeyNumber="2897" />
         </Attribute>
         <Attribute StaticName="Group" Type="Entity" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="0311cd9f-c2f9-4cd2-8b22-eb7d1b34433f" KeyNumber="1195">
-            <Value Key="Name" Value="Group" Type="String" />
-            <Value Key="Notes" Value="" Type="String" />
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="Required" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="e9c881f9-143c-4b9d-b820-e9240b34d877" KeyNumber="2898">
             <Value Key="DefaultValue" Value="" Type="String" />
             <Value Key="Disabled" Value="False" Type="Boolean" />
             <Value Key="InputType" Value="entity-default" Type="String" />
+            <Value Key="Name" Value="Group" Type="String" />
+            <Value Key="Notes" Value="" Type="String" />
+            <Value Key="Required" Value="False" Type="Boolean" />
             <Value Key="ValidationRegExJavaScript" Value="" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Entity" AttributeSetName="@Entity" EntityGUID="7876067b-c77d-43e4-b2c4-db94dc81a289" KeyNumber="1195">
-            <Value Key="EnableEdit" Value="True" Type="Boolean" />
-            <Value Key="EnableCreate" Value="True" Type="Boolean" />
-            <Value Key="EnableAddExisting" Value="True" Type="Boolean" />
-            <Value Key="EnableRemove" Value="True" Type="Boolean" />
-            <Value Key="EnableDelete" Value="False" Type="Boolean" />
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Entity" AttributeSetName="@Entity" EntityGUID="7876067b-c77d-43e4-b2c4-db94dc81a289" KeyNumber="2898">
             <Value Key="AllowMultiValue" Value="False" Type="Boolean" />
+            <Value Key="EnableAddExisting" Value="True" Type="Boolean" />
+            <Value Key="EnableCreate" Value="True" Type="Boolean" />
+            <Value Key="EnableDelete" Value="False" Type="Boolean" />
+            <Value Key="EnableEdit" Value="True" Type="Boolean" />
+            <Value Key="EnableRemove" Value="True" Type="Boolean" />
             <Value Key="EntityType" Value="Group" Type="String" />
           </Entity>
         </Attribute>
         <Attribute StaticName="Notes" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="1b8eddc3-dc59-464c-a6a7-6f7f0d96293f" KeyNumber="1196">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="af393176-05bb-4eed-b163-ef5e82c38e82" KeyNumber="2899">
+            <Value Key="InputType" Value="string-wysiwyg" Type="String" />
             <Value Key="Name" Value="Notes" Type="String" />
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
-            <Value Key="InputType" Value="string-wysiwyg" Type="String" />
           </Entity>
         </Attribute>
       </Attributes>
     </AttributeSet>
   </AttributeSets>
   <Entities>
-    <Entity AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="0f464cd3-8a97-454d-b594-72c8cb767174" KeyNumber="58">
-      <Value Key="DisplayName" Value="Short Links Management" Type="String" />
-      <Value Key="Description" Value="A simple app to manage short-links, typical for marketing and qr-codes" Type="String" />
-      <Value Key="Version" Value="01.00.00" Type="String" />
-      <Value Key="Folder" Value="ShortLinks" Type="String" />
-      <Value Key="AllowTokenTemplates" Value="False" Type="Boolean" />
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="0f464cd3-8a97-454d-b594-72c8cb767174" KeyNumber="155">
       <Value Key="AllowRazorTemplates" Value="True" Type="Boolean" />
+      <Value Key="AllowTokenTemplates" Value="False" Type="Boolean" />
+      <Value Key="Description" Value="A simple app to manage short-links, typical for marketing and qr-codes" Type="String" />
+      <Value Key="DisplayName" Value="Short Links Management" Type="String" />
+      <Value Key="Folder" Value="ShortLinks" Type="String" />
       <Value Key="Hidden" Value="False" Type="Boolean" />
-      <Value Key="OriginalId" Value="" Type="String" />
-      <Value Key="RequiredVersion" Value="08.12.00" Type="String" />
+      <Value Key="OriginalId" Value="6b607276-63cf-4c9c-be39-73ec66d7f7fb" Type="String" />
       <Value Key="RequiredDnnVersion" Value="07.02.00" Type="String" />
-      <Value Key="SupportsAjaxReload" Value="True" Type="Boolean" />
+      <Value Key="RequiredVersion" Value="08.12.00" Type="String" />
+      <Value Key="SupportsAjaxReload" Value="False" Type="Boolean" />
+      <Value Key="Version" Value="01.00.00" Type="String" />
     </Entity>
-    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="9e6cfd90-9074-48ab-ade6-0e8ba4b6be2c" KeyNumber="58">
-      <Value Key="QrForegroundColor" Value="#000000" Type="String" />
-      <Value Key="QrDimension" Value="200" Type="Number" />
-      <Value Key="QrEcc" Value="l" Type="String" />
-      <Value Key="FallbackLink" Value="/?shorturl=fallback&amp;key={key}" Type="Hyperlink" />
-      <Value Key="QrBackgroundColor" Value="#FFFFFF" Type="String" />
-      <Value Key="ShortDomain" Value="2qr.ch" Type="String" />
-      <Value Key="GenerateKeyLength" Value="3" Type="Number" />
-      <Value Key="GenerateKeyPrefix" Value="q" Type="String" />
-      <Value Key="RetiredLink" Value="/?shorturl=retired&amp;key={key}" Type="Hyperlink" />
-      <Value Key="Protocol" Value="http://" Type="String" />
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="9e6cfd90-9074-48ab-ade6-0e8ba4b6be2c" KeyNumber="155">
+      <Value Key="ConfigurationComplete" Value="False" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="FallbackLink" Value="https://www.2sic.com/?shorturl=fallback&amp;key={key}" Type="Hyperlink">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="GenerateKeyLength" Value="3" Type="Number">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="GenerateKeyPrefix" Value="p" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Protocol" Value="http://" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrBackgroundColor" Value="#FFFFFF" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrDimension" Value="800" Type="Number">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrEcc" Value="l" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrForegroundColor" Value="#000000" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="RetiredLink" Value="https://www.2sic.com/?shorturl=retired&amp;key={key}" Type="Hyperlink">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="ShortDomain" Value="qr-dev.2sxc.org" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="TargetDomain" Value="www.2sic.com" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="TargetProtocol" Value="https://" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
     </Entity>
-    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="85f8bdf7-cafd-45c7-b7ac-48a0a7e8f315" KeyNumber="58" />
+    <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="85f8bdf7-cafd-45c7-b7ac-48a0a7e8f315" KeyNumber="155" />
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="56185dad-c20f-43f1-be57-dbdb9d87f0fb" AttributeSetName="Group" EntityGUID="e8213a14-a764-408a-8b85-739541279edd">
-      <Value Key="Title" Value="Default" Type="String" />
       <Value Key="Description" Value="Standard link, with normal forwarding" Type="String" />
-      <Value Key="RedirectType" Value="default" Type="String" />
       <Value Key="ForwardHandler" Value="/xyz?key={KEY}" Type="Hyperlink" />
+      <Value Key="RedirectType" Value="default" Type="String" />
+      <Value Key="Title" Value="Default" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="02fb3b0d-4cbe-467f-9edf-50c97ebcbc8f" AttributeSetName="Link" EntityGUID="092f15a3-981c-4835-bc84-af6e0274c020">
-      <Value Key="Key" Value="qdemo" Type="String" />
-      <Value Key="Link" Value="http://www.google.ch/" Type="Hyperlink" />
-      <Value Key="Title" Value="Demo link" Type="String" />
-      <Value Key="Retired" Value="False" Type="Boolean" />
       <Value Key="Group" Value="e8213a14-a764-408a-8b85-739541279edd" Type="Entity" />
-      <Value Key="Notes" Value="" Type="String" />
+      <Value Key="Key" Value="qdemo" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="http://www.google.ch/" Type="Hyperlink">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Notes" Value="" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="OLDTitle" Value="Demo link" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Retired" Value="False" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Show" Value="True" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="2f102b13-06b5-491c-9752-b0e7e4849694">
+      <Value Key="ContentTypeStaticName" Value="" Type="String" />
+      <Value Key="IsHidden" Value="False" Type="Boolean" />
+      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="Location" Value="Portal File System" Type="String" />
       <Value Key="Name" Value="Manage" Type="String" />
       <Value Key="Path" Value="_Manage.cshtml" Type="String" />
-      <Value Key="ContentTypeStaticName" Value="" Type="String" />
-      <Value Key="ContentDemoEntity" Value="" Type="Entity" />
+      <Value Key="Pipeline" Value="0e87e45b-1a9e-4507-af80-d8c31e977e3f" Type="Entity" />
       <Value Key="PresentationTypeStaticName" Value="" Type="String" />
-      <Value Key="PresentationDemoEntity" Value="" Type="Entity" />
-      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
-      <Value Key="ListContentDemoEntity" Value="" Type="Entity" />
-      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
-      <Value Key="ListPresentationDemoEntity" Value="" Type="Entity" />
-      <Value Key="Type" Value="C# Razor" Type="String" />
-      <Value Key="IsHidden" Value="False" Type="Boolean" />
-      <Value Key="Location" Value="Portal File System" Type="String" />
-      <Value Key="UseForList" Value="False" Type="Boolean" />
       <Value Key="PublishData" Value="False" Type="Boolean" />
       <Value Key="StreamsToPublish" Value="" Type="String" />
-      <Value Key="Pipeline" Value="0e87e45b-1a9e-4507-af80-d8c31e977e3f" Type="Entity" />
+      <Value Key="Type" Value="C# Razor" Type="String" />
+      <Value Key="UseForList" Value="False" Type="Boolean" />
       <Value Key="ViewNameInUrl" Value="" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="DataPipeline" AttributeSetName="DataPipeline" EntityGUID="0e87e45b-1a9e-4507-af80-d8c31e977e3f">
-      <Value Key="Name" Value="All" Type="String" />
-      <Value Key="Description" Value="" Type="String" />
       <Value Key="AllowEdit" Value="True" Type="Boolean" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="All" Type="String" />
       <Value Key="StreamsOut" Value="ListContent,Default,Links" Type="String" />
       <Value Key="StreamWiring" Value="bbd54c28-15d8-490d-990a-8fdc9a5a2775:Default&gt;95074805-8180-471f-aa9f-49a0c038224d:Default&#xD;&#xA;95074805-8180-471f-aa9f-49a0c038224d:Default&gt;fab49ed2-14a7-401f-bafa-14fa6ad70f40:Default&#xD;&#xA;fab49ed2-14a7-401f-bafa-14fa6ad70f40:Default&gt;Out:Links" Type="String" />
       <Value Key="TestParameters" Value="[Module:ModuleID]=2034" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="bbd54c28-15d8-490d-990a-8fdc9a5a2775" KeyGuid="0e87e45b-1a9e-4507-af80-d8c31e977e3f">
-      <Value Key="Name" Value="ICache" Type="String" />
       <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="ICache" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.ICache, ToSic.Eav.DataSources" Type="String" />
       <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 800,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="95074805-8180-471f-aa9f-49a0c038224d" KeyGuid="0e87e45b-1a9e-4507-af80-d8c31e977e3f">
-      <Value Key="Name" Value="EntityTypeFilter" Type="String" />
       <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="EntityTypeFilter" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.EntityTypeFilter, ToSic.Eav.DataSources" Type="String" />
       <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 532,&#xD;&#xA;  &quot;Left&quot;: 449&#xD;&#xA;}" Type="String" />
     </Entity>
@@ -472,8 +854,8 @@
       <Value Key="TypeName" Value="Link" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="fab49ed2-14a7-401f-bafa-14fa6ad70f40" KeyGuid="0e87e45b-1a9e-4507-af80-d8c31e977e3f">
-      <Value Key="Name" Value="ValueSort" Type="String" />
       <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="ValueSort" Type="String" />
       <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
       <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 340,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
     </Entity>
@@ -481,37 +863,128 @@
       <Value Key="Attributes" Value="Key" Type="String" />
       <Value Key="Directions" Value="asc" Type="String" />
     </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="02fb3b0d-4cbe-467f-9edf-50c97ebcbc8f" AttributeSetName="Link" EntityGUID="29c7c497-3e4b-4964-9e09-535122efcdee">
-      <Value Key="Key" Value="qab" Type="String" />
-      <Value Key="Link" Value="" Type="Hyperlink" />
-      <Value Key="Title" Value="" Type="String" />
-      <Value Key="Retired" Value="False" Type="Boolean" />
-      <Value Key="Group" Value="e8213a14-a764-408a-8b85-739541279edd" Type="Entity" />
-      <Value Key="Notes" Value="" Type="String" />
-    </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="55e0fd02-2d05-481d-a455-b08d5ec35598">
+      <Value Key="ContentTypeStaticName" Value="" Type="String" />
+      <Value Key="IsHidden" Value="False" Type="Boolean" />
+      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="Location" Value="Portal File System" Type="String" />
       <Value Key="Name" Value="Web.Config Snippet" Type="String" />
       <Value Key="Path" Value="_web.config-snippet.cshtml" Type="String" />
-      <Value Key="ContentTypeStaticName" Value="" Type="String" />
-      <Value Key="ContentDemoEntity" Value="" Type="Entity" />
       <Value Key="PresentationTypeStaticName" Value="" Type="String" />
-      <Value Key="PresentationDemoEntity" Value="" Type="Entity" />
-      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
-      <Value Key="ListContentDemoEntity" Value="" Type="Entity" />
-      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
-      <Value Key="ListPresentationDemoEntity" Value="" Type="Entity" />
-      <Value Key="Type" Value="C# Razor" Type="String" />
-      <Value Key="IsHidden" Value="False" Type="Boolean" />
-      <Value Key="Location" Value="Portal File System" Type="String" />
-      <Value Key="UseForList" Value="False" Type="Boolean" />
       <Value Key="PublishData" Value="False" Type="Boolean" />
       <Value Key="StreamsToPublish" Value="" Type="String" />
-      <Value Key="Pipeline" Value="" Type="Entity" />
+      <Value Key="Type" Value="C# Razor" Type="String" />
+      <Value Key="UseForList" Value="False" Type="Boolean" />
       <Value Key="ViewNameInUrl" Value="webconfig/.*" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="f459ead0-52ca-4724-bab7-a97f5f220872">
+      <Value Key="ContentDemoEntity" Value="54036f79-88f5-4956-a27d-343348c991ff" Type="Entity" />
+      <Value Key="ContentTypeStaticName" Value="76da0325-7514-410f-8e39-93119464c8e5" Type="String" />
+      <Value Key="IsHidden" Value="False" Type="Boolean" />
+      <Value Key="ListContentTypeStaticName" Value="" Type="String" />
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="Location" Value="Portal File System" Type="String" />
+      <Value Key="Name" Value="Page specific list" Type="String" />
+      <Value Key="Path" Value="_Page Specific List.cshtml" Type="String" />
+      <Value Key="Pipeline" Value="14214811-b2be-4012-b723-db8f00ab73cb" Type="Entity" />
+      <Value Key="PresentationTypeStaticName" Value="" Type="String" />
+      <Value Key="PublishData" Value="False" Type="Boolean" />
+      <Value Key="StreamsToPublish" Value="" Type="String" />
+      <Value Key="Type" Value="C# Razor" Type="String" />
+      <Value Key="UseForList" Value="False" Type="Boolean" />
+      <Value Key="ViewNameInUrl" Value="" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="76da0325-7514-410f-8e39-93119464c8e5" AttributeSetName="GeneratorConfig" EntityGUID="8bc0b20c-1dd6-4a71-9890-64380d4182aa">
+      <Value Key="Prefix" Value="q" Type="String" />
+      <Value Key="Title" Value="Default" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="02fb3b0d-4cbe-467f-9edf-50c97ebcbc8f" AttributeSetName="Link" EntityGUID="a597c739-65f5-49b3-bcb5-e038d6405b85">
+      <Value Key="Key" Value="qht" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="/catalog/product/sichere-website-mit-https" Type="Hyperlink">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Notes" Value="" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="OLDTitle" Value="" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Retired" Value="True" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="Show" Value="False" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="76da0325-7514-410f-8e39-93119464c8e5" AttributeSetName="GeneratorConfig" EntityGUID="54036f79-88f5-4956-a27d-343348c991ff">
+      <Value Key="Prefix" Value="p" Type="String" />
+      <Value Key="Title" Value="Products" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="76da0325-7514-410f-8e39-93119464c8e5" AttributeSetName="GeneratorConfig" EntityGUID="37c7da02-cab5-4e69-958a-75c3e192320d">
+      <Value Key="Prefix" Value="t" Type="String" />
+      <Value Key="Title" Value="Test" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="DataPipeline" AttributeSetName="DataPipeline" EntityGUID="14214811-b2be-4012-b723-db8f00ab73cb">
+      <Value Key="AllowEdit" Value="True" Type="Boolean" />
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="Page specific list with module content" Type="String" />
+      <Value Key="StreamsOut" Value="ListContent,Default,Links" Type="String" />
+      <Value Key="StreamWiring" Value="cb77ebf1-8a09-43d7-ade2-3dcfd3c410a7:Default&gt;79ac6945-c98e-4814-a1bf-b608065c473a:Default&#xD;&#xA;cb77ebf1-8a09-43d7-ade2-3dcfd3c410a7:Drafts&gt;79ac6945-c98e-4814-a1bf-b608065c473a:Drafts&#xD;&#xA;cb77ebf1-8a09-43d7-ade2-3dcfd3c410a7:Published&gt;79ac6945-c98e-4814-a1bf-b608065c473a:Published&#xD;&#xA;79ac6945-c98e-4814-a1bf-b608065c473a:Default&gt;24fdcffa-9b59-4d3b-b09b-4d25ef96d590:Default&#xD;&#xA;24fdcffa-9b59-4d3b-b09b-4d25ef96d590:ListContent&gt;Out:ListContent&#xD;&#xA;24fdcffa-9b59-4d3b-b09b-4d25ef96d590:Default&gt;Out:Default&#xD;&#xA;79ac6945-c98e-4814-a1bf-b608065c473a:Default&gt;b7d8e429-d13a-40a5-a787-94c7e001d141:Default&#xD;&#xA;b7d8e429-d13a-40a5-a787-94c7e001d141:Default&gt;4332c3b6-9ca9-4f9f-848b-29d777543221:Default&#xD;&#xA;4332c3b6-9ca9-4f9f-848b-29d777543221:Default&gt;Out:Links" Type="String" />
+      <Value Key="TestParameters" Value="[Module:ModuleID]=3840" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="cb77ebf1-8a09-43d7-ade2-3dcfd3c410a7" KeyGuid="14214811-b2be-4012-b723-db8f00ab73cb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="ICache" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.Caches.ICache, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 800,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="79ac6945-c98e-4814-a1bf-b608065c473a" KeyGuid="14214811-b2be-4012-b723-db8f00ab73cb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="PublishingFilter" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.PublishingFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 620,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="24fdcffa-9b59-4d3b-b09b-4d25ef96d590" KeyGuid="14214811-b2be-4012-b723-db8f00ab73cb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="ModuleDataSource" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.SexyContent.DataSources.ModuleDataSource, ToSic.SexyContent" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 440,&#xD;&#xA;  &quot;Left&quot;: 440&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="b7d8e429-d13a-40a5-a787-94c7e001d141" KeyGuid="14214811-b2be-4012-b723-db8f00ab73cb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="EntityTypeFilter" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.EntityTypeFilter, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 431,&#xD;&#xA;  &quot;Left&quot;: 740&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.EntityTypeFilter" AttributeSetName="|Config ToSic.Eav.DataSources.EntityTypeFilter" EntityGUID="993278f4-98c6-46f5-8a63-c1fb73c2f8d8" KeyGuid="b7d8e429-d13a-40a5-a787-94c7e001d141">
+      <Value Key="TypeName" Value="Link" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="76da0325-7514-410f-8e39-93119464c8e5" AttributeSetName="GeneratorConfig" EntityGUID="4d053604-a71b-432d-8359-44355382c928">
+      <Value Key="Prefix" Value="c" Type="String" />
+      <Value Key="Title" Value="Catalog" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="|Config ToSic.Eav.DataSources.ValueSort" EntityGUID="77b05c02-ee9d-46f6-88d5-7d92ac2ba886" KeyGuid="dcc3d0b4-6239-472b-b331-0fee37da62b0">
+      <Value Key="Attributes" Value="Key" Type="String" />
+      <Value Key="Directions" Value="asc" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="DataPipelinePart" AttributeSetName="DataPipelinePart" EntityGUID="4332c3b6-9ca9-4f9f-848b-29d777543221" KeyGuid="14214811-b2be-4012-b723-db8f00ab73cb">
+      <Value Key="Description" Value="" Type="String" />
+      <Value Key="Name" Value="ValueSort" Type="String" />
+      <Value Key="PartAssemblyAndType" Value="ToSic.Eav.DataSources.ValueSort, ToSic.Eav.DataSources" Type="String" />
+      <Value Key="VisualDesignerData" Value="{&#xD;&#xA;  &quot;Top&quot;: 240,&#xD;&#xA;  &quot;Left&quot;: 620&#xD;&#xA;}" Type="String" />
+    </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="|Config ToSic.Eav.DataSources.ValueSort" AttributeSetName="|Config ToSic.Eav.DataSources.ValueSort" EntityGUID="7951218d-53bf-4ae4-8933-fe6cebe2d54b" KeyGuid="4332c3b6-9ca9-4f9f-848b-29d777543221">
+      <Value Key="Attributes" Value="Key" Type="String" />
+      <Value Key="Directions" Value="asc" Type="String" />
     </Entity>
   </Entities>
   <PortalFiles />
   <PortalFolders>
-    <Folder Id="679" RelativePath="adam/ShortLinks/" />
+    <Folder Id="3112" RelativePath="adam/ShortLinks/" />
+    <Folder Id="3113" RelativePath="adam/ShortLinks/cT7WG6LHDUKxL5s4UqZdPg/" />
+    <Folder Id="3114" RelativePath="adam/ShortLinks/cT7WG6LHDUKxL5s4UqZdPg/Link/" />
   </PortalFolders>
 </SexyContent>

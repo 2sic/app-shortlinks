@@ -1,25 +1,33 @@
-<link rel="stylesheet" href="@App.Path/assets/styles.css" data-enableoptimizations="bottom" />
-@{
+@* the manage UI is only meant for admins - so additional protection is added just in case it's on the wrong page *@
+@if(Permissions.UserMayEditContent){
     var all = AsDynamic(Data["Links"]);
     var Lib = CreateInstance("_library.cshtml");
     var newKey = Lib.GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, true);
-}
-
-@if(Permissions.UserMayEditContent){
      
+    <link rel="stylesheet" href="@App.Path/assets/styles.css" data-enableoptimizations="bottom" />
     <div class="container-fluid app-shortlinks-wrapper">
         <div class="ly-container-inner">
             <div class="row">
                 <div class="col-xs-12">
-                    @RenderPage("_Table Fragment.cshtml", new {links = all})
+                    @RenderPage("_Shortlink-Table.cshtml", new {Links = all, Lib = Lib})
 
-                    @Edit.Toolbar(actions: "new", contentType: "Link", prefill: new { Key = newKey, Link = Request.RawUrl }) for @newKey  
+                    todo: 2ro - make bootstrap 4 buttons
+                    @RenderPage("_New-Buttons.cshtml", new { Lib = Lib})
                     <div>
-                        <br>
-                        <br>
-                        <em>
-                            Setup note: make sure you have configured the web.config - instructions <a href="@Link.To(parameters: "webconfig=true")">here</a>
-                        </em>
+
+                        <h3>Shortlink Configuration</h3>
+                        todo: 2ro: show most important settings here:
+
+                        <ul>
+                            <li>Real Domain: todo protocol & domain of target!</li>
+                            <li>Test Domain: todo protocol & domain for testing!</li>
+                            <li>Keyword Prefix: todo</li>
+                            <li>Keyword length: todo</li>
+                            <li>QR: todo: list colors and size</li>
+                            <li>Web.config configuration <a href="@Link.To(parameters: "webconfig=true")">instructions</a></li>
+                            <li>Configuration Complete: @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
+                        </ul>
+
                     </div>
                 </div>
             </div>

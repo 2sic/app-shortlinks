@@ -24,11 +24,9 @@
         return qrPath.Replace("{link}", target);
     }
 
-}
 
-@functions {
+
     // this is the block in charge of creating unique, new url-keys which are not yet in use
-
     int maxTries = 100; // only try this 100x to not crash
     public string GenerateCode(string prefix, int length, bool lowerOnly) {
         var realLength = length - prefix.Length;

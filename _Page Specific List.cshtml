@@ -1,13 +1,16 @@
 <link rel="stylesheet" href="@App.Path/assets/styles.css" data-enableoptimizations="bottom" /> 
 @{
+    // find all short-links pointing to this page
     var currentPath = Request.RawUrl.ToLower();
     var pageLinks = AsDynamic(Data["Links"]).Where( x => x.Link.ToLower().Equals(currentPath));
     var showLinks = pageLinks.Where(x => x.Show == true);
-    var Lib = CreateInstance("_library.cshtml");
-    var newKey = Lib.GenerateCode( Content.Prefix , (int)App.Settings.GenerateKeyLength, true);
-}
-@* public part *@
 
+    // Get Lib
+    var Lib = CreateInstance("_library.cshtml");
+}
+@* 
+    public part
+*@
 @foreach(var link in showLinks) {
     var domainAndKey = App.Settings.ShortDomain + "/" + link.Key;
     var full = App.Settings.Protocol + domainAndKey;
@@ -37,24 +40,21 @@
 }
 
 
-@* admin part *@
-@if(Permissions.UserMayEditContent){
-        <div class="container-fluid app-shortlinks-wrapper">
-            <div class="ly-container-inner">
-                <div class="row">
-                    <div class="col-xs-12 sc-element">
-                        @*Edit.Toolbar(Content)*@
-
-                        @RenderPage("_Table Fragment.cshtml", new { links = pageLinks })
-                    </div>
-                    <div class="col-xs-12">
-                        
-                        @Edit.Toolbar(actions: "new", contentType: "Link", prefill: new { Key = newKey, Link = Request.RawUrl }) for @newKey
-                    </div>
+@* 
+    Admin UI
+    This shows the short-links pointing to the current page
+*@
+@if(Permissions.UserMayEditContent) {
+    <div class="container-fluid app-shortlinks-wrapper">
+        <div class="ly-container-inner">
+            <div class="row">
+                <div class="col-xs-12">
+                    @RenderPage("_Shortlink-Table.cshtml", new { Links = pageLinks, Lib = Lib })
+                </div>
+                <div class="col-xs-12">
+                    @RenderPage("_New-Buttons.cshtml", new { Lib = Lib, Config = Content})
                 </div>
             </div>
-        </div>              
+        </div>
+    </div>              
 }
-
-
-

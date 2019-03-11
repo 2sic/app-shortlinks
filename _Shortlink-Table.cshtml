@@ -1,18 +1,18 @@
+@using Connect.Razor.Blade;
 @{
-    var links = PageData["links"];
-    var Lib = CreateInstance("_library.cshtml");
+    var links = PageData["Links"];
+    var Lib = PageData["Lib"];
 }
 
-<table>
+<table @Edit.TagToolbar(Content)>
     <tr>
         <th>Key</th>
         <th>Group</th>
         <th>Title</th>
         <th>Target</th>
-        <th>Show</th>
-        <th>Disabl.</th>
-        <th>Test link</th>
-        <th>API</th>
+        <th title="Enabled or Retired/Disabled">✔️</th>
+        <th title="Show to user">👁️</th>
+        <th>Tests</th>
         <th>QR</th>
     </tr>       
     @foreach(var link in links) {
@@ -21,7 +21,7 @@
         <tr class="app-shortlinks-table-row">
             <td>
                 <a href="javascript:;" onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
-                    @link.Key<br /><span style="font-size:11px;">(click for toolbar)</span>
+                    @link.Key
                 </a>
             </td>
             <td>
@@ -37,22 +37,20 @@
                     @link.Link
                 </a>
             </td>
-            <td>@link.Show</td>
-            <td>@link.Retired</td>
+            <td>@(link.Retired == true ? "🚫" : "✔️")</td>
+            <td>@(link.Show == true ? "👁": "")</td>
             <td>
-                <a href="@full.Replace("http:","https:")" target="_blank">
-                    @App.Settings.ShortDomain/@link.Key
+                <a href="@full.Replace("http:","https:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">
+                    🔗
+                </a>
+                <a href="@Lib.TestLink(link.Key)" target="_blank">
+                    #️⃣
                 </a>
             </td>
             <td>
-                <a href="@Lib.TestLink(link.Key)" target="_blank">test</a>
-            </td>
-            <td>
-                <a href="@qr" target="_blank">QR</a>
-            </td>
-            <td>
-                @* this does not work - why not? please make it happen that a toolbar appears to edit the link // 2rf   *@
-                @Edit.Toolbar(Content)
+                <a href="@qr" target="_blank">
+                    QR
+                </a>
             </td>
         </tr>
     }

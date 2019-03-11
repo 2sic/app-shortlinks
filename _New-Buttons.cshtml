@@ -1,0 +1,27 @@
+@{
+  var Lib = PageData["Lib"];
+  var config = PageData["Config"] as dynamic;
+
+  var prefix = (config != null) ? config.Prefix : "";
+  if(string.IsNullOrEmpty(prefix)) {
+    prefix = App.Settings.GenerateKeyPrefix;
+  }
+
+  var length = (config != null && config.Length != null) ? (int)config.Length : 0;
+  if(length == 0) {
+    length = (int)App.Settings.GenerateKeyLength;
+  }
+
+  // generate a new random key for this page, in case the admin wants to add it
+  var newKey = Lib.GenerateCode(prefix, length, true);
+}
+
+<div>
+  <a href="javascript:;" onclick='$2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: "@newKey", Link: "@Request.RawUrl"}})'>
+      add @newKey
+  </a>
+  - 
+  <a href="javascript:;" onclick='var key = prompt("new key?"); if(!key) return; $2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: key, Link: "@Request.RawUrl"}})'>
+      add manual
+  </a>
+</div>
