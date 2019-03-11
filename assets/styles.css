@@ -1,0 +1,18 @@
+.app-shortlinks-table-row:nth-child(even){
+    background-color: rgba(239, 239, 239, 1)
+}
+
+.app-shortlinks-wrapper table{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+.app-shortlinks-wrapper table td, .app-shortlinks-wrapper table th{
+    padding: 10px
+}
+.app-shortlinks-wrapper table td:hover a{
+    text-decoration: underline;
+}
+.app-shortlinks-wrapper table th{
+    border-bottom: 1px solid #0087F4;
+}

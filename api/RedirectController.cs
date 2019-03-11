@@ -47,10 +47,21 @@ public class RedirectController : SxcApiController
                 link = ReplaceCI(forward, "{link}", link);
         }
 
-        // now inject various patters as needed
+        // now inject various patterns as needed
         link = ReplaceCI(link, "{key}", key);
         link = ReplaceCI(link, "{domain}", domain);
         link = ReplaceCI(link, "{url}", url);
+        
+        if(link.StartsWith("/")) {
+            var defProt = App.Settings.TargetProtocol;
+            var defHost = App.Settings.TargetDomain;
+
+            if(!string.IsNullOrEmpty(defHost))
+                link = defHost + link;
+                
+            if(!string.IsNullOrEmpty(defProt))
+                link = defProt + link;
+        }
 
         // redirect
         if(debug)
@@ -69,7 +80,7 @@ public class RedirectController : SxcApiController
     private HttpResponseMessage Redirect(string link){
         // now redirect
         var response = Request.CreateResponse(HttpStatusCode.Moved);
-        response.Headers.Location = new Uri(link);
+        response.Headers.Location = new Uri(link, UriKind.RelativeOrAbsolute);
         return response;
     }
 

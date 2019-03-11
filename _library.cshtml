@@ -1,0 +1,61 @@
+@functions {
+    // try to generate a good web-api test-link
+
+    public string TestLink(string key){
+        return "/desktopmodules/2sxc/api/app/ShortLinks/api/Redirect/Go?key=" + key;
+    }
+
+    public string QrGenerator(){
+        // path to qr-code generator
+        var qrPath = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone=0&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}"
+            .Replace("{foreground}", App.Settings.QrForegroundColor.Replace("#", ""))
+            .Replace("{background}", App.Settings.QrBackgroundColor.Replace("#", ""))
+            .Replace("{dim}", App.Settings.QrDimension.ToString())
+            .Replace("{ecc}", App.Settings.QrEcc);
+        return qrPath;
+    }
+    
+    // to share the value across multiple calls...
+    string qrPath;
+    
+    public string QrLink(string target)
+    {
+        if(qrPath == null) qrPath = QrGenerator();
+        return qrPath.Replace("{link}", target);
+    }
+
+}
+
+@functions {
+    // this is the block in charge of creating unique, new url-keys which are not yet in use
+
+    int maxTries = 100; // only try this 100x to not crash
+    public string GenerateCode(string prefix, int length, bool lowerOnly) {
+        var realLength = length - prefix.Length;
+        var existingKeys = AsDynamic(Data["Links"])
+            .Select(l => l.Key)
+            .Distinct()
+            .ToDictionary(k => k, null);
+        
+        for(var attempt = 0; attempt < maxTries; attempt++) {
+            var newKey = prefix + RandomString(realLength, lowerOnly);
+            if(!existingKeys.ContainsKey(newKey))
+                return newKey;
+        }
+
+        throw new Exception("tried too many attempts, didn't find a code, will abort'");
+    }
+
+    // funky, trivial randomizer
+    // got basic idea from http://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings-in-c
+    private static Random random = new Random();
+
+    public static string RandomString(int length, bool lowerOnly)
+    {
+        const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+        const string withUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + chars;
+        
+        return new string(Enumerable.Repeat(lowerOnly ? chars : withUpper, length)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+}

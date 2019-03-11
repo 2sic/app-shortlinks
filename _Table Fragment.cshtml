@@ -1,0 +1,60 @@
+@{
+    var links = PageData["links"];
+    var Lib = CreateInstance("_library.cshtml");
+}
+
+<table>
+    <tr>
+        <th>Key</th>
+        <th>Group</th>
+        <th>Title</th>
+        <th>Target</th>
+        <th>Show</th>
+        <th>Disabl.</th>
+        <th>Test link</th>
+        <th>API</th>
+        <th>QR</th>
+    </tr>       
+    @foreach(var link in links) {
+        var full = App.Settings.Protocol + App.Settings.ShortDomain + "/" + link.Key;
+        var qr = Lib.QrLink(full);
+        <tr class="app-shortlinks-table-row">
+            <td>
+                <a href="javascript:;" onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
+                    @link.Key<br /><span style="font-size:11px;">(click for toolbar)</span>
+                </a>
+            </td>
+            <td>
+                @{
+                    var cat = ((IEnumerable<dynamic>)link.Group).FirstOrDefault();
+                    var catTitle = cat != null ? cat.Title : "";
+                }
+                @catTitle
+            </td>
+            <td>@link.Title</td>
+            <td>
+                <a href="@link.Link" target='_blank'>
+                    @link.Link
+                </a>
+            </td>
+            <td>@link.Show</td>
+            <td>@link.Retired</td>
+            <td>
+                <a href="@full.Replace("http:","https:")" target="_blank">
+                    @App.Settings.ShortDomain/@link.Key
+                </a>
+            </td>
+            <td>
+                <a href="@Lib.TestLink(link.Key)" target="_blank">test</a>
+            </td>
+            <td>
+                <a href="@qr" target="_blank">QR</a>
+            </td>
+            <td>
+                @* this does not work - why not? please make it happen that a toolbar appears to edit the link // 2rf   *@
+                @Edit.Toolbar(Content)
+            </td>
+        </tr>
+    }
+</table>
+           
