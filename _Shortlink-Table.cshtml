@@ -40,7 +40,7 @@
             <td>@(link.Retired == true ? "🚫" : "✔️")</td>
             <td>@(link.Show == true ? "👁": "")</td>
             <td>
-                <a href="@full.Replace("http:","https:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">
+                <a href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">
                     🔗
                 </a>
                 <a href="@Lib.TestLink(link.Key)" target="_blank">

@@ -15,7 +15,7 @@
                 </conditions>
                 <!-- note that the root path can have subportal name in it - if the app is installed in a sub-portal -->
                 <!-- note also that in DNN9, the root path (after the sub-portal) is not desktopmodules/2sxc/api but instead /api/2sxc -->
-                <action type="Redirect" url="@DotNetNuke.Framework.ServicesFramework.GetServiceFrameworkRoot()desktopmodules/2sxc/api/app/shortlinks/api/redirect/go?key={R:1}" />
+                <action type="Rewrite" url="@DotNetNuke.Framework.ServicesFramework.GetServiceFrameworkRoot()desktopmodules/2sxc/api/app/shortlinks/live/api/redirect/go?key={R:1}" />
             </rule>
     </textarea>
 </div>
