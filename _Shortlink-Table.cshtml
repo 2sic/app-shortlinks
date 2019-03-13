@@ -11,10 +11,10 @@
             <th>@App.Resources.TableHlGroup</th>
             <th>@App.Resources.TableHlTitle</th>
             <th>@App.Resources.TableHlTarget</th>
-            <th title="Enabled or Retired/Disabled">✔️</th>
-            <th title="Show to user">👁️</th>
-            <th>@App.Resources.TableHlTests</th>
-            <th>@App.Resources.TableHlQR</th>
+            <th class="text-center" title="Enabled or Retired/Disabled">✔️</th>
+            <th class="text-center" title="Show to user">👁️</th>
+            <th class="text-center">@App.Resources.TableHlTests</th>
+            <th class="text-center">@App.Resources.TableHlQR</th>
         </tr>       
     </thead>
     <tbody>
@@ -40,13 +40,19 @@
                     @link.Link
                 </a>
             </td>
-            <td>@(link.Retired == true ? "🚫" : "✔️")</td>
-            <td>@(link.Show == true ? "👁": "")</td>
-            <td>
-                <a href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">🔗</a> | 
-                <a href="@Lib.TestLink(link.Key)" target="_blank">#️⃣</a>
+            <td class="text-center">@(link.Retired == true ? "🚫" : "✔️")</td>
+            <td class="text-center">@(link.Show == true ? "👁": "")</td>
+            <td class="text-center">
+                <ul class="list-inline" >
+                    <li class="list-inline-item">
+                        <a class="is-not-underlined" href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">🔗</a>
+                    </li> 
+                    <li class="list-inline-item">
+                        <a class="is-not-underlined" href="@Lib.TestLink(link.Key)" target="_blank">#️⃣</a>
+                    </li>
+                </ul>
             </td>
-            <td>
+            <td class="text-center">
                 <a href="@qr" target="_blank">
                     QR
                 </a>
