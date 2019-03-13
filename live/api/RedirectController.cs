@@ -32,16 +32,20 @@ public class RedirectController : SxcApiController
             link = App.Settings.FallbackLink;
         else {
             link = current.Link;
+    
+            // decide what to do with the link / how to handle it
+            var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();            
+            var mode = grp != null ? grp.RedirectType : "default";
+            string forward = grp != null ? grp.ForwardHandler.ToString() : "";
+            string forwardRetired = grp != null ? grp.ForwardRetired.ToString() : "";
 
             // 5. if yes and retired: use redirect to app-setting
             if(current.Retired != null && current.Retired)
                 link = App.Settings.RetiredLink;
 
-            // decide what to do with the link / how to handle it
-            var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();
-            var mode = grp != null ? grp.RedirectType : "default";
-            string forward = grp != null ? grp.ForwardHandler.ToString() : "";
-
+            // if group setting retired link not empty and retired: use redirect to group settings
+            if(!String.IsNullOrEmpty(forwardRetired) && current.Retired != null && current.Retired)
+                link = forwardRetired;
 
             if(mode == "forward" && !String.IsNullOrEmpty(forward))
                 link = ReplaceCI(forward, "{link}", link);
