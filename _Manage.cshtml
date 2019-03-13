@@ -5,29 +5,37 @@
     var newKey = Lib.GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, true);
      
     <link rel="stylesheet" href="@App.Path/assets/styles.css" data-enableoptimizations="bottom" />
+
     <div class="container-fluid app-shortlinks-wrapper">
         <div class="ly-container-inner">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-12">
+                    <a href="http://app-dev.2sxc.org/shortlink-system/en-us">EN</a> | <a href="http://app-dev.2sxc.org/shortlink-system/de-de">DE</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
                     @RenderPage("_Shortlink-Table.cshtml", new {Links = all, Lib = Lib})
 
-                    todo: 2ro - make bootstrap 4 buttons
                     @RenderPage("_New-Buttons.cshtml", new { Lib = Lib})
-                    <div>
 
+                    <div class="configuration-info">
                         <h3>Shortlink Configuration</h3>
-                        todo: 2ro: show most important settings here:
-
                         <ul>
-                            <li>Real Domain: todo protocol & domain of target!</li>
-                            <li>Test Domain: todo protocol & domain for testing!</li>
-                            <li>Keyword Prefix: todo</li>
-                            <li>Keyword length: todo</li>
-                            <li>QR: todo: list colors and size</li>
+                            <li>Real Domain: @(App.Settings.TargetProtocol)@(App.Settings.TargetDomain)</li>
+                            <li>Test Domain: @(App.Settings.Protocol)@(App.Settings.ShortDomain)</li>
+                            <li>Keyword Prefix: @(App.Settings.GenerateKeyPrefix)</li>
+                            <li>Keyword length: @(App.Settings.GenerateKeyLength)</li>
+                            <li>QR: 
+                                <ul>
+                                    <li>Background Color: @(App.Settings.QrBackgroundColor)</li>
+                                    <li>Foreground Color: @(App.Settings.QrForegroundColor)</li>
+                                    <li>Size: @(App.Settings.QrDimension)</li>
+                                </ul>
+                            </li>
                             <li>Web.config configuration <a href="@Link.To(parameters: "webconfig=true")">instructions</a></li>
                             <li>Configuration Complete: @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
                         </ul>
-
                     </div>
                 </div>
             </div>

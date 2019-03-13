@@ -16,3 +16,11 @@
 .app-shortlinks-wrapper table th{
     border-bottom: 1px solid #0087F4;
 }
+
+.app-shortlinks-wrapper .btn-wrapper{
+    margin: 10px 0;
+}
+
+.app-shortlinks-wrapper .configuration-info{
+    margin-top: 50px;
+}
