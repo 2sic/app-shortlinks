@@ -4,21 +4,24 @@
     var Lib = PageData["Lib"];
 }
 
-<table @Edit.TagToolbar(Content)>
-    <tr>
-        <th>@App.Resources.TableHlKey</th>
-        <th>@App.Resources.TableHlGroup</th>
-        <th>@App.Resources.TableHlTitle</th>
-        <th>@App.Resources.TableHlTarget</th>
-        <th title="Enabled or Retired/Disabled">✔️</th>
-        <th title="Show to user">👁️</th>
-        <th>@App.Resources.TableHlTests</th>
-        <th>@App.Resources.TableHlQR</th>
-    </tr>       
+<table @Edit.TagToolbar(Content) class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>@App.Resources.TableHlKey</th>
+            <th>@App.Resources.TableHlGroup</th>
+            <th>@App.Resources.TableHlTitle</th>
+            <th>@App.Resources.TableHlTarget</th>
+            <th title="Enabled or Retired/Disabled">✔️</th>
+            <th title="Show to user">👁️</th>
+            <th>@App.Resources.TableHlTests</th>
+            <th>@App.Resources.TableHlQR</th>
+        </tr>       
+    </thead>
+    <tbody>
     @foreach(var link in links) {
         var full = App.Settings.Protocol + App.Settings.ShortDomain + "/" + link.Key;
         var qr = Lib.QrLink(full);
-        <tr class="app-shortlinks-table-row">
+        <tr>
             <td>
                 <a href="javascript:;" onclick="$2sxc(this).manage.run('edit', {entityId: @link.EntityId})">
                     @link.Key
@@ -40,12 +43,8 @@
             <td>@(link.Retired == true ? "🚫" : "✔️")</td>
             <td>@(link.Show == true ? "👁": "")</td>
             <td>
-                <a href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">
-                    🔗
-                </a>
-                <a href="@Lib.TestLink(link.Key)" target="_blank">
-                    #️⃣
-                </a>
+                <a href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">🔗</a> | 
+                <a href="@Lib.TestLink(link.Key)" target="_blank">#️⃣</a>
             </td>
             <td>
                 <a href="@qr" target="_blank">
@@ -54,5 +53,6 @@
             </td>
         </tr>
     }
+    </tbody>
 </table>
            

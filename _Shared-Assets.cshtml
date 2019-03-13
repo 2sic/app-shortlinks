@@ -1,0 +1,9 @@
+@* include Connect.KOI *@
+@using Connect.Koi
+
+@* include bootstrap 4 if the framework isn't known *@
+@if(!Koi.Is("bs4")) 
+{
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" data-enableoptimizations="true" />
+    <script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous" data-enableoptimizations="true" ></script>
+}

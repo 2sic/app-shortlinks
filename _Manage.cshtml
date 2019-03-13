@@ -1,5 +1,7 @@
 @* the manage UI is only meant for admins - so additional protection is added just in case it's on the wrong page *@
 @if(Permissions.UserMayEditContent){
+    @RenderPage("_Shared-Assets.cshtml")
+
     var all = AsDynamic(Data["Links"]);
     var Lib = CreateInstance("_library.cshtml");
     var newKey = Lib.GenerateCode(App.Settings.GenerateKeyPrefix, (int)App.Settings.GenerateKeyLength, true);
@@ -10,7 +12,19 @@
         <div class="ly-container-inner">
             <div class="row">
                 <div class="col-12">
-                    <a href="http://app-dev.2sxc.org/shortlink-system/en-us">EN</a> | <a href="http://app-dev.2sxc.org/shortlink-system/de-de">DE</a>
+                    <ul class="nav justify-content-end mb-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://app-dev.2sxc.org/shortlink-system/en-us">EN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://app-dev.2sxc.org/shortlink-system/de-de">DE</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1>QR-Codes</h1>
                 </div>
             </div>
             <div class="row">
@@ -19,22 +33,22 @@
 
                     @RenderPage("_New-Buttons.cshtml", new { Lib = Lib})
 
-                    <div class="configuration-info">
+                    <div class="configuration-info mt-5">
                         <h3>Shortlink Configuration</h3>
-                        <ul>
-                            <li>Real Domain: @(App.Settings.TargetProtocol)@(App.Settings.TargetDomain)</li>
-                            <li>Test Domain: @(App.Settings.Protocol)@(App.Settings.ShortDomain)</li>
-                            <li>Keyword Prefix: @(App.Settings.GenerateKeyPrefix)</li>
-                            <li>Keyword length: @(App.Settings.GenerateKeyLength)</li>
-                            <li>QR: 
-                                <ul>
-                                    <li>Background Color: @(App.Settings.QrBackgroundColor)</li>
-                                    <li>Foreground Color: @(App.Settings.QrForegroundColor)</li>
-                                    <li>Size: @(App.Settings.QrDimension)</li>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Real Domain:</strong> @(App.Settings.TargetProtocol)@(App.Settings.TargetDomain)</li>
+                            <li class="list-group-item"><strong>Test Domain:</strong> @(App.Settings.Protocol)@(App.Settings.ShortDomain)</li>
+                            <li class="list-group-item"><strong>Keyword Prefix:</strong> @(App.Settings.GenerateKeyPrefix)</li>
+                            <li class="list-group-item"><strong>Keyword length:</strong> @(App.Settings.GenerateKeyLength)</li>
+                            <li class="list-group-item"><strong class="d-inline-block mb-1">QR:</strong>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><strong>Background Color:</strong> @(App.Settings.QrBackgroundColor)</li>
+                                    <li class="list-group-item"><strong>Foreground Color:</strong> @(App.Settings.QrForegroundColor)</li>
+                                    <li class="list-group-item"><strong>Size:</strong> @(App.Settings.QrDimension)</li>
                                 </ul>
                             </li>
-                            <li>Web.config configuration <a href="@Link.To(parameters: "webconfig=true")">instructions</a></li>
-                            <li>Configuration Complete: @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
+                            <li class="list-group-item"><strong>Web.config configuration:</strong> <a href="@Link.To(parameters: "webconfig=true")">instructions</a></li>
+                            <li class="list-group-item"><strong>Configuration Complete:</strong> @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
                         </ul>
                     </div>
                 </div>
