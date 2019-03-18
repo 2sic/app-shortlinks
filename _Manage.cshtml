@@ -36,19 +36,22 @@
                     <div class="configuration-info mt-5">
                         <h3>Shortlink Configuration</h3>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Real Domain:</strong> @(App.Settings.TargetProtocol)@(App.Settings.TargetDomain)</li>
-                            <li class="list-group-item"><strong>Test Domain:</strong> @(App.Settings.Protocol)@(App.Settings.ShortDomain)</li>
-                            <li class="list-group-item"><strong>Keyword Prefix:</strong> @(App.Settings.GenerateKeyPrefix)</li>
-                            <li class="list-group-item"><strong>Keyword length:</strong> @(App.Settings.GenerateKeyLength)</li>
-                            <li class="list-group-item pb-0"><strong class="d-inline-block mb-3">QR:</strong>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><strong>Background Color:</strong> @(App.Settings.QrBackgroundColor)</li>
-                                    <li class="list-group-item"><strong>Foreground Color:</strong> @(App.Settings.QrForegroundColor)</li>
-                                    <li class="list-group-item"><strong>Size:</strong> @(App.Settings.QrDimension)</li>
-                                </ul>
+                            <li class="list-group-item">
+                                <strong>Configuration Completed:</strong> 
+                                @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
+                                see <a href="@Link.To(parameters: "webconfig=true")">instructions</a>
                             </li>
-                            <li class="list-group-item"><strong>Web.config configuration:</strong> <a href="@Link.To(parameters: "webconfig=true")">instructions</a></li>
-                            <li class="list-group-item"><strong>Configuration Complete:</strong> @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
+
+                            <li class="list-group-item"><strong>Domain for relative redirects:</strong> @(App.Settings.TargetProtocol)@(App.Settings.TargetDomain)</li>
+                            <li class="list-group-item"><strong>Short Domain:</strong> @(App.Settings.Protocol)@(App.Settings.ShortDomain)</li>
+
+                            <li class="list-group-item"><strong>Keyword - Default Prefixes:</strong> @(App.Settings.GenerateKeyPrefix)</li>
+                            <li class="list-group-item"><strong>Keyword - Default Length:</strong> @(App.Settings.GenerateKeyLength)</li>
+
+                            <li class="list-group-item"><strong>QR - Background Color:</strong> @(App.Settings.QrBackgroundColor)</li>
+                            <li class="list-group-item"><strong>QR - Foreground Color:</strong> @(App.Settings.QrForegroundColor)</li>
+                            <li class="list-group-item"><strong>QR - Size:</strong> @(App.Settings.QrDimension)</li>
+
                         </ul>
                     </div>
                 </div>

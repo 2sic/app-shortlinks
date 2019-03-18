@@ -83,7 +83,7 @@ public class RedirectController : SxcApiController
 
     private HttpResponseMessage Redirect(string link){
         // now redirect
-        var response = Request.CreateResponse(HttpStatusCode.Moved);
+        var response = Request.CreateResponse(HttpStatusCode.Redirect);
         response.Headers.Location = new Uri(link, UriKind.RelativeOrAbsolute);
         return response;
     }

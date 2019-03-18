@@ -13,8 +13,8 @@
             <th>@App.Resources.TableHlTarget</th>
             <th class="text-center" title="Enabled or Retired/Disabled">✔️</th>
             <th class="text-center" title="Show to user">👁️</th>
-            <th class="text-center">@App.Resources.TableHlTests</th>
             <th class="text-center">@App.Resources.TableHlQR</th>
+            <th class="text-center">@App.Resources.TableHlTests</th>
         </tr>       
     </thead>
     <tbody>
@@ -43,6 +43,11 @@
             <td class="text-center">@(link.Retired == true ? "🚫" : "✔️")</td>
             <td class="text-center">@(link.Show == true ? "👁": "")</td>
             <td class="text-center">
+                <a href="@qr" target="_blank">
+                    QR
+                </a>
+            </td>
+            <td class="text-center">
                 <ul class="list-inline" >
                     <li class="list-inline-item">
                         <a class="is-not-underlined" href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">🔗</a>
@@ -51,11 +56,6 @@
                         <a class="is-not-underlined" href="@Lib.TestLink(link.Key)" target="_blank">#️⃣</a>
                     </li>
                 </ul>
-            </td>
-            <td class="text-center">
-                <a href="@qr" target="_blank">
-                    QR
-                </a>
             </td>
         </tr>
     }
