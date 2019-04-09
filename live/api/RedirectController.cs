@@ -15,7 +15,7 @@ public class RedirectController : SxcApiController
     [AllowAnonymous] 
 	[HttpGet]
     [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
-    public HttpResponseMessage Go(string key, string domain = null, string url = null, bool debug = false)
+    public HttpResponseMessage Go(string key, string domain = null, string url = null, bool debug = true)
     {
         // lower the key, just to be sure
         key = key.ToLower();
@@ -32,12 +32,35 @@ public class RedirectController : SxcApiController
             link = App.Settings.FallbackLink;
         else {
             link = current.Link;
-    
+
             // decide what to do with the link / how to handle it
             var grp = ((IEnumerable<dynamic>)current.Group).FirstOrDefault();            
             var mode = grp != null ? grp.RedirectType : "default";
             string forward = grp != null ? grp.ForwardHandler.ToString() : "";
             string forwardRetired = grp != null ? grp.ForwardRetired.ToString() : "";
+            var additionalAnalyticsParamBool = "";
+            var additionalAnalyticsParam = "";
+
+            // check for analytic params settings
+            if(grp != null){
+                if(!String.IsNullOrEmpty(grp.EnableAddingQueryString)) {
+                    additionalAnalyticsParamBool = grp.EnableAddingQueryString;
+                } else {
+                    additionalAnalyticsParamBool = App.Settings.EnableAddingQueryString;
+                }
+            } else {
+                additionalAnalyticsParamBool = App.Settings.EnableAddingQueryString;
+            }
+
+            if(additionalAnalyticsParamBool == "true"){
+                if(grp != null && !String.IsNullOrEmpty(grp.QueryStringAddition)){
+                    additionalAnalyticsParam = grp.QueryStringAddition;
+                } else {
+                    additionalAnalyticsParam = App.Settings.QueryStringAddition;
+                }                
+
+                link = TargetUrlWithParams(link, additionalAnalyticsParam);
+            }
 
             // 5. if yes and retired: use redirect to app-setting
             if(current.Retired != null && current.Retired)
@@ -66,6 +89,8 @@ public class RedirectController : SxcApiController
             if(!string.IsNullOrEmpty(defProt))
                 link = defProt + link;
         }
+
+
 
         // redirect
         if(debug)
@@ -96,6 +121,22 @@ public class RedirectController : SxcApiController
             RegexOptions.IgnoreCase
         );
         return result;
+    }
+
+    public static string TargetUrlWithParams(string link, string linkParams){
+        string paramPrefix = "?";
+        string[] urlItems = {};
+
+        if(link.Contains("?")){
+           paramPrefix = "&";
+        }
+        
+        if(link.Contains("#")){
+            urlItems = link.Split('#');
+            return urlItems[0] + paramPrefix + linkParams + "#" + urlItems[1];
+        } else {
+            return link + paramPrefix + linkParams;
+        }
     }
 }
 
