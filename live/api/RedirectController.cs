@@ -16,7 +16,7 @@ public class RedirectController : SxcApiController
     [AllowAnonymous] 
 	[HttpGet]
     [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
-    public HttpResponseMessage Go(string key, string domain = null, string url = null, bool debug = true)
+    public HttpResponseMessage Go(string key, string domain = null, string url = null, bool debug = false)
     {
         // lower the key, just to be sure
         key = key.ToLower();
