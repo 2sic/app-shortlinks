@@ -36,35 +36,9 @@
             </td>
             <td>@link.OLDTitle</td>
             <td>
-                @{
-                    var additionalAnalyticsParamBool = "";
-                    var additionalAnalyticsParam = "";
-                }
-                @if(cat != null){
-                    if(!string.IsNullOrEmpty(cat.EnableAddingQueryString)) {
-                        additionalAnalyticsParamBool = @cat.EnableAddingQueryString;
-                    } else {
-                        additionalAnalyticsParamBool = @App.Settings.EnableAddingQueryString;
-                    }
-                } else {
-                    additionalAnalyticsParamBool = @App.Settings.EnableAddingQueryString;
-                }
-
-                @if(additionalAnalyticsParamBool == "true"){
-                    if(cat != null && !string.IsNullOrEmpty(cat.QueryStringAddition)){
-                        additionalAnalyticsParam = @cat.QueryStringAddition;
-                    } else {
-                        additionalAnalyticsParam = @App.Settings.QueryStringAddition;
-                    }
-
-                    <a href="@Lib.TargetLinkWithParams(link.Link, additionalAnalyticsParam)" target='_blank'>
-                        @Lib.TargetLinkWithParams(link.Link, additionalAnalyticsParam)
-                    </a>
-                } else {
-                    <a href="@link.Link" target='_blank'>
-                        @link.Link
-                    </a>
-                }
+                <a href="@link.Link" target='_blank'>
+                    @link.Link
+                </a>
             </td>
             <td class="text-center">@(link.Retired == true ? "🚫" : "✔️")</td>
             <td class="text-center">@(link.Show == true ? "👁": "")</td>

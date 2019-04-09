@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Connect.Razor.Blade;
 
 public class RedirectController : SxcApiController
 {
@@ -38,28 +39,17 @@ public class RedirectController : SxcApiController
             var mode = grp != null ? grp.RedirectType : "default";
             string forward = grp != null ? grp.ForwardHandler.ToString() : "";
             string forwardRetired = grp != null ? grp.ForwardRetired.ToString() : "";
-            var additionalAnalyticsParamBool = "";
-            var additionalAnalyticsParam = "";
 
-            // check for analytic params settings
-            if(grp != null){
-                if(!String.IsNullOrEmpty(grp.EnableAddingQueryString)) {
-                    additionalAnalyticsParamBool = grp.EnableAddingQueryString;
-                } else {
-                    additionalAnalyticsParamBool = App.Settings.EnableAddingQueryString;
-                }
-            } else {
-                additionalAnalyticsParamBool = App.Settings.EnableAddingQueryString;
-            }
+            var addAnalytics = grp == null
+                ? App.Settings.EnableAddingQueryString
+                : Text.First(grp.EnableAddingQueryString, App.Settings.EnableAddingQueryString);
 
-            if(additionalAnalyticsParamBool == "true"){
-                if(grp != null && !String.IsNullOrEmpty(grp.QueryStringAddition)){
-                    additionalAnalyticsParam = grp.QueryStringAddition;
-                } else {
-                    additionalAnalyticsParam = App.Settings.QueryStringAddition;
-                }                
+            if(addAnalytics == "true") {
+                var analyticsParams = grp == null
+                    ? App.Settings.QueryStringAddition
+                    : Text.First(grp.QueryStringAddition, App.Settings.QueryStringAddition);
 
-                link = TargetUrlWithParams(link, additionalAnalyticsParam);
+                link = TargetUrlWithParams(link, analyticsParams);
             }
 
             // 5. if yes and retired: use redirect to app-setting
@@ -124,19 +114,15 @@ public class RedirectController : SxcApiController
     }
 
     public static string TargetUrlWithParams(string link, string linkParams){
-        string paramPrefix = "?";
+        string paramPrefix = link.Contains("?") ? "&" : "?";
         string[] urlItems = {};
 
-        if(link.Contains("?")){
-           paramPrefix = "&";
-        }
-        
-        if(link.Contains("#")){
+        if(link.Contains("#")) {
             urlItems = link.Split('#');
             return urlItems[0] + paramPrefix + linkParams + "#" + urlItems[1];
-        } else {
-            return link + paramPrefix + linkParams;
         }
+        
+        return link + paramPrefix + linkParams;
     }
 }
 
