@@ -20,6 +20,12 @@
     <tbody>
     @foreach(var link in links) {
         var full = App.Settings.Protocol + App.Settings.ShortDomain + "/" + link.Key;
+        
+        // only for pro-feature
+        var proDiffUrl = App.Settings.EnableQrUseTracking
+            ? App.Settings.Protocol + App.Settings.ShortDomain + "/" + Lib.PreprocessUrl(link.Key)
+            : full;
+
         var qr = Lib.QrLink(full);
         <tr>
             <td>
@@ -60,9 +66,17 @@
                 <ul class="list-inline" >
                     <li class="list-inline-item">
                         <a class="is-not-underlined" href="@full.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@link.Key">🔗</a>
+                        @if(App.Settings.EnableQrUseTracking) 
+                        {
+                            <a class="is-not-underlined" href="@proDiffUrl.Replace("https:","http:")" target="_blank" title="@App.Settings.ShortDomain/@Lib.PreprocessUrl(link.Key)">⚡</a>
+                        }
                     </li> 
                     <li class="list-inline-item">
-                        <a class="is-not-underlined" href="@Lib.TestLink(link.Key)" target="_blank">#️⃣</a>
+                        <a class="is-not-underlined" href="@Lib.TestLink(link.Key, false)" target="_blank">#️⃣</a>
+                        @if(App.Settings.EnableQrUseTracking) 
+                        {
+                            <a class="is-not-underlined" href="@Lib.TestLink(link.Key, true)" target="_blank">⚡</a>
+                        }
                     </li>
                 </ul>
             </td>

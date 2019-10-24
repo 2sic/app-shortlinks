@@ -15,7 +15,10 @@
         return qrCode;
     }
 
-    public string TestLink(string key){
+    public string TestLink(string key, bool preprocess) {
+        if(preprocess) {
+            key = PreprocessUrl(key);
+        }
         return "/shortlink-system/en-us/desktopmodules/2sxc/api/app/shortlinks/live/api/redirect/go?key=" + key;
     }
 
@@ -30,6 +33,7 @@
     
     public string QrLink(string target)
     {
+        target = PreprocessUrl(target);
         if(qrPath == null) qrPath = QrGenerator();
         return qrPath.Replace("{link}", target);
     }
@@ -53,6 +57,7 @@
 
     public string QrSvgLink(string target)
     {
+        target = PreprocessUrl(target);
         return App.Settings.EnablePro
             ? QrSvgPath.Replace("{link}", target)
             : "";
@@ -61,9 +66,31 @@
 
     public string QrEpsLink(string target)
     {
+        target = PreprocessUrl(target);
         return App.Settings.EnablePro
             ? QrSvgPath.Replace("=svg&", "=eps&").Replace("{link}", target)
             : "";
+    }
+
+
+    // Special Pro feature
+    // if pro is enabled, and UrlDifferentiation is activated
+    // the url will be modified so the QR code has the same value, but in a way that allows it to be 
+    // detected as a QR key
+    // It does this by converting everything to all caps (incl. http etc.) which allows for longer codes
+    // It then adds a $ at the end to mark the QR use.
+    // see also https://azing.org/2sxc/r/A7LozGPM
+    public string PreprocessUrl(string target)
+    {
+        // don't do this unless pro features are enabled
+        if(!App.Settings.EnableQrUseTracking)
+            return target;
+        
+        // requires that original url key doesn't have upper-case
+        if(target.ToLower() != target)
+            return "Error: can't use CAP$ on this url because it contains upper case characters - which is bad practice";
+
+        return target.ToUpper() + "$";
     }
 
 

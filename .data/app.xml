@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="10.08.00" ExportDate="2019-10-24T23:22:22.753962+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="10.08.00" ExportDate="2019-10-25T00:19:57.5433324+02:00">
   <Header>
     <App Guid="6b607276-63cf-4c9c-be39-73ec66d7f7fb" />
     <Language Default="en-US" />
@@ -170,6 +170,38 @@
             </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="c1ca018c-4918-4b72-91fa-46ea8967a3f9" KeyNumber="3208" />
+        </Attribute>
+        <Attribute StaticName="EnableQrUseTracking" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="8faaf82a-0d45-4f15-aa1e-c1c0f069a7ff" KeyNumber="3219">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="false" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Enable Pro QR Use Tracking" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="dc5beb41-a370-4ac4-9b3e-485487865dc0" KeyNumber="3219" />
         </Attribute>
         <Attribute StaticName="GroupTesting" Type="Empty" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="4252afe6-7065-4a30-b9ee-d21e41fd27b7" KeyNumber="2871">
@@ -737,7 +769,6 @@
           </Entity>
         </Attribute>
         <Attribute StaticName="QrSvgEcc" Type="String" IsTitle="false">
-          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="0813635d-6e47-4d33-8ddf-6c3414cb011d" KeyNumber="3213" />
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="26ce1453-9b52-4526-a8e8-7443dcccead5" KeyNumber="3213">
             <Value Key="CustomJavaScript" Value="" Type="String">
               <Dimension DimensionID="129" ReadOnly="false" />
@@ -775,6 +806,7 @@
               <Dimension DimensionID="129" ReadOnly="false" />
             </Value>
           </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="0813635d-6e47-4d33-8ddf-6c3414cb011d" KeyNumber="3213" />
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="f198e5a6-0690-4e33-80fb-20066b59beee" KeyNumber="3213">
             <Value Key="DropdownValues" Value="Low (recommended):l&#xA;Medium:m&#xA;High:h" Type="String">
               <Dimension DimensionID="129" ReadOnly="false" />
@@ -935,6 +967,153 @@
               <Dimension DimensionID="129" ReadOnly="false" />
             </Value>
           </Entity>
+        </Attribute>
+        <Attribute StaticName="GroupAnalyticsPro" Type="Empty" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="ff1c31d1-e693-4eb8-b431-4e6bc8870b41" KeyNumber="3215">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Group Analytics Pro - QR Use Tracking" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="2f90b362-e145-442c-9954-75b9f2d27b7f" KeyNumber="3215">
+            <Value Key="DefaultCollapsed" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="QrUseDetectable" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="855586eb-a519-4d87-a192-5ed7cc9d82ca" KeyNumber="3216">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="false" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="QR Use Detectable" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Generate QR codes for the same target, but slighly different so the measuring system can tell if the QR was used or the user typed in the value manually.&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Requires Pro Features.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="5a5ffc70-b42b-4d23-96bf-1a6d73e0ce15" KeyNumber="3216" />
+        </Attribute>
+        <Attribute StaticName="QrUseDifferentiator" Type="String" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c1d91e68-e6c8-45ef-ba8c-fff851d6e982" KeyNumber="3217">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-dropdown" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Qr Use Differentiator" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;How should the QR codes be different from the shortlinks. The currently recommended schema is CAP$.&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="dbb282cd-8b1f-4140-8080-9fbf32d5772b" KeyNumber="3217">
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="2f7dba5e-59f4-40ff-b14a-f48baab46927" KeyNumber="3217">
+            <Value Key="DropdownValues" Value="none:none&#xA;Schema CAP$:CAP$" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableTextEntry" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="QrUseTracked" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="3c0ac23a-82d3-41ff-9e40-7ebab6691c70" KeyNumber="3218">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="false" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-default" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Qr Use Tracked" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Should QR uses vs. normal access be tracked? (not implemented ATM)&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="129" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="1bb54963-95c3-434e-a4d2-c33e27fdc2ca" KeyNumber="3218" />
         </Attribute>
       </Attributes>
     </AttributeSet>
@@ -1762,7 +1941,7 @@
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean">
         <Dimension DimensionID="129" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="01.02.00" Type="String">
+      <Value Key="Version" Value="01.03.00" Type="String">
         <Dimension DimensionID="129" ReadOnly="false" />
       </Value>
     </Entity>
@@ -1774,6 +1953,9 @@
         <Dimension DimensionID="129" ReadOnly="false" />
       </Value>
       <Value Key="EnablePro" Value="True" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="EnableQrUseTracking" Value="False" Type="Boolean">
         <Dimension DimensionID="129" ReadOnly="false" />
       </Value>
       <Value Key="FallbackLink" Value="https://www.2sic.com/?shorturl=fallback&amp;key={key}" Type="Hyperlink">
@@ -1813,6 +1995,15 @@
         <Dimension DimensionID="129" ReadOnly="false" />
       </Value>
       <Value Key="QrSvgQuietZone" Value="1" Type="Number">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrUseDetectable" Value="False" Type="Boolean">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrUseDifferentiator" Value="none" Type="String">
+        <Dimension DimensionID="129" ReadOnly="false" />
+      </Value>
+      <Value Key="QrUseTracked" Value="False" Type="Boolean">
         <Dimension DimensionID="129" ReadOnly="false" />
       </Value>
       <Value Key="QueryStringAddition" Value="sl_key=appTest" Type="String">

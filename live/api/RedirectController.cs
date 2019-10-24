@@ -18,11 +18,22 @@ public class RedirectController : SxcApiController
     [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.Anonymous)]
     public HttpResponseMessage Go(string key, string domain = null, string url = null, bool debug = false)
     {
+        // 0. Pro feature: Check if we're using CAP$
+        var realQrScanDetected = false;
+        if(key.EndsWith("$") && App.Settings.EnableQrUseTracking)
+        {
+            // remember, to in future tell analytics about this
+            realQrScanDetected = true;
+            key = key.TrimEnd(new char[] { '$'});
+        }
+
         // lower the key, just to be sure
         key = key.ToLower();
 
         // 1. get all links
         var all = AsDynamic(App.Data["Link"]);
+
+
 
         // 2. try to find the key all lower case (assumes that the system is all lower-case & case-insensitive)
         var current = all.FirstOrDefault(l => l.Key == key);
