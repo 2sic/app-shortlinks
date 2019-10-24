@@ -44,8 +44,17 @@
             <td class="text-center">@(link.Show == true ? "👁": "")</td>
             <td class="text-center">
                 <a href="@qr" target="_blank">
-                    QR
+                    png
                 </a>
+                @if(App.Settings.EnablePro) {
+                    <br>
+                    <a href="@Lib.QrSvgLink(full)" target="_blank">
+                        svg
+                    </a>
+                    <a href="@Lib.QrEpsLink(full)" target="_blank">
+                        eps
+                    </a>
+                }
             </td>
             <td class="text-center">
                 <ul class="list-inline" >

@@ -1,43 +1,69 @@
 @functions {
-    // try to generate a good web-api test-link
+    // 2dm extracted
+    private string qrPathTemplate = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone={qzone}&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}";
+
+    // 2dm added
+    public string QrCodeGenerator(string fg, string bg, int size, string ecc, int qZone, string format) {
+        var qrCode = qrPathTemplate
+            .Replace("{qzone}", qZone.ToString())
+            .Replace("{foreground}", fg.Replace("#", ""))
+            .Replace("{background}", bg.Replace("#", ""))
+            .Replace("{dim}", size.ToString())
+            .Replace("{ecc}", ecc);
+        if(format != null)
+            qrCode = qrCode.Replace("&data=", "&format=" + format + "&data=");
+        return qrCode;
+    }
 
     public string TestLink(string key){
         return "/shortlink-system/en-us/desktopmodules/2sxc/api/app/shortlinks/live/api/redirect/go?key=" + key;
     }
 
-    public string TargetLinkWithParams(string link, string param){
-        string paramPrefix = "?";
-        string[] urlItems = {};
-
-        if(link.Contains("?")){
-           paramPrefix = "&";
-        }
-        
-        if(link.Contains("#")){
-            urlItems = link.Split('#');
-            return urlItems[0] + paramPrefix + param + "#" + urlItems[1];
-        } else {
-            return link + paramPrefix + param;
-        }        
-    }
-
     public string QrGenerator(){
-        // path to qr-code generator
-        var qrPath = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone=0&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}"
-            .Replace("{foreground}", App.Settings.QrForegroundColor.Replace("#", ""))
-            .Replace("{background}", App.Settings.QrBackgroundColor.Replace("#", ""))
-            .Replace("{dim}", App.Settings.QrDimension.ToString())
-            .Replace("{ecc}", App.Settings.QrEcc);
-        return qrPath;
+        var set = App.Settings;
+        return QrCodeGenerator(set.QrForegroundColor, set.QrBackgroundColor, Decimal.ToInt32(set.QrDimension), set.QrEcc, 0, null);
     }
     
     // to share the value across multiple calls...
     string qrPath;
+       
     
     public string QrLink(string target)
     {
         if(qrPath == null) qrPath = QrGenerator();
         return qrPath.Replace("{link}", target);
+    }
+
+    //#region SVG    
+    // 2dm: added Path template for SVG code links
+    string QrSvgPath {
+        get {
+            if(_qrSvgPath == null) 
+                _qrSvgPath = QrCodeGenerator(
+                    App.Settings.QrSvgForeground, 
+                    App.Settings.QrSvgBackground, 
+                    Decimal.ToInt32(App.Settings.QrSvgDimension), 
+                    App.Settings.QrSvgEcc, 
+                    Decimal.ToInt32(App.Settings.QrSvgQuietZone),
+                    "svg");
+             return _qrSvgPath;
+        }
+    }
+    private string _qrSvgPath;
+
+    public string QrSvgLink(string target)
+    {
+        return App.Settings.EnablePro
+            ? QrSvgPath.Replace("{link}", target)
+            : "";
+    }
+    //#endregion
+
+    public string QrEpsLink(string target)
+    {
+        return App.Settings.EnablePro
+            ? QrSvgPath.Replace("=svg&", "=eps&").Replace("{link}", target)
+            : "";
     }
 
 
