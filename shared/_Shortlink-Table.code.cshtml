@@ -1,0 +1,91 @@
+@inherits ToSic.Sxc.Dnn.RazorComponentCode
+
+@functions {
+  private string qrPathTemplate = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone={qzone}&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}";
+  string QrPath {
+    get {
+      if(_qrPath == null) {
+        _qrPath = QrCodeGenerator(
+          App.Settings.QrForegroundColor,
+          App.Settings.QrBackgroundColor,
+          Decimal.ToInt32(App.Settings.QrDimension),
+          App.Settings.QrEcc,
+          0,
+          null);
+      }
+      return _qrPath;
+    }
+  }
+  private string _qrPath;
+  string QrSvgPath {
+    get {
+      if(_qrSvgPath == null)
+        _qrSvgPath = QrCodeGenerator(
+          App.Settings.QrSvgForeground,
+          App.Settings.QrSvgBackground,
+          Decimal.ToInt32(App.Settings.QrSvgDimension),
+          App.Settings.QrSvgEcc,
+          Decimal.ToInt32(App.Settings.QrSvgQuietZone),
+          "svg");
+      return _qrSvgPath;
+    }
+  }
+  private string _qrSvgPath;
+
+  public string TestLink(string key, bool preprocess) {
+    if(preprocess) {
+      key = PreprocessUrl(key);
+    }
+    return "/shortlink-system/en-us/desktopmodules/2sxc/api/app/shortlinks/api/redirect/go?key=" + key;
+  }
+
+  public string QrLink(string target) {
+    target = PreprocessUrl(target);
+    return QrPath.Replace("{link}", target);
+  }
+
+  public string QrSvgLink(string target) {
+    target = PreprocessUrl(target);
+    return App.Settings.EnablePro
+      ? QrSvgPath.Replace("{link}", target)
+      : "";
+  }
+
+  public string QrEpsLink(string target) {
+    target = PreprocessUrl(target);
+    return App.Settings.EnablePro
+      ? QrSvgPath.Replace("=svg&", "=eps&").Replace("{link}", target)
+      : "";
+  }
+
+  public string QrCodeGenerator(string fg, string bg, int size, string ecc, int qZone, string format) {
+    var qrCode = qrPathTemplate
+      .Replace("{qzone}", qZone.ToString())
+      .Replace("{foreground}", fg.Replace("#", ""))
+      .Replace("{background}", bg.Replace("#", ""))
+      .Replace("{dim}", size.ToString())
+      .Replace("{ecc}", ecc);
+    if(format != null)
+      qrCode = qrCode.Replace("&data=", "&format=" + format + "&data=");
+    return qrCode;
+  }
+
+  // Special Pro feature
+  // if pro is enabled, and UrlDifferentiation is activated
+  // the url will be modified so the QR code has the same value, but in a way that allows it to be
+  // detected as a QR key
+  // It does this by converting everything to all caps (incl. http etc.) which allows for longer codes
+  // It then adds a $ at the end to mark the QR use.
+  // see also https://azing.org/2sxc/r/A7LozGPM
+  public string PreprocessUrl(string target) {
+    // don't do this unless pro features are enabled
+    if(!App.Settings.EnableQrUseTracking)
+      return target;
+
+    // requires that original url key doesn't have upper-case
+    if(target.ToLower() != target)
+      return "Error: can't use CAP$ on this url because it contains upper case characters - which is bad practice";
+
+    return target.ToUpper() + "$";
+  }
+}
