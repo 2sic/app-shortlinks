@@ -1,4 +1,8 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
+@{
+  var res = App.Resources;
+  var sett = App.Settings;
+}
 
 @* the manage UI is only meant for admins - so additional protection is added just in case it's on the wrong page *@
 @if(Edit.Enabled){
@@ -6,7 +10,7 @@
     <div class="ly-container-inner">
       <div class="row">
         <div class="col-12">
-          <h1>@App.Resources.TableTitle</h1>
+          <h1>@res.TableTitle</h1>
         </div>
       </div>
       <div class="row">
@@ -16,57 +20,37 @@
           @RenderPage("shared/_New-Buttons.cshtml")
 
           <div class="configuration-info mt-5">
-            <h3>@App.Resources.ShortlinkConfiguration</h3>
+            <h3>@res.ShortlinkConfiguration</h3>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <strong>@App.Resources.ConfigurationCompleted</strong>
-                @(App.Settings.ConfigurationComplete == true ? "✔️" : "🚫")
-                @Html.Raw(App.Resources.ConfigurationInstructions)
+                <strong>@res.ConfigurationCompleted</strong>
+                @(sett.ConfigurationComplete == true ? "✔️" : "🚫")
+                @Html.Raw(res.ConfigurationInstructions)
+                and <a href='@Link.To(parameters: "webconfig=true")' target="_blank">Web.Config Snippet</a>
               </li>
 
-              <li class="list-group-item"><strong>@App.Resources.TargetDomain</strong> @("//" + App.Settings.TargetDomain)</li>
-              <li class="list-group-item"><strong>@App.Resources.ShortDomain</strong> @("//" + App.Settings.ShortDomain)</li>
+              <li class="list-group-item"><strong>@res.TargetDomain</strong> @("//" + sett.TargetDomain)</li>
+              <li class="list-group-item"><strong>@res.ShortDomain</strong> @("//" + sett.ShortDomain)</li>
 
-              <li class="list-group-item"><strong>@App.Resources.DefaultKeyPrefixes</strong> @(App.Settings.GenerateKeyPrefix)</li>
-              <li class="list-group-item"><strong>@App.Resources.DefaultKeyLength</strong> @(App.Settings.GenerateKeyLength)</li>
+              <li class="list-group-item"><strong>@res.DefaultKeyPrefixes</strong> @sett.GenerateKeyPrefix</li>
+              <li class="list-group-item"><strong>@res.DefaultKeyLength</strong> @sett.GenerateKeyLength</li>
 
-              <li class="list-group-item"><strong>@App.Resources.QrBackgroundColor</strong> @(App.Settings.QrBackgroundColor)</li>
-              <li class="list-group-item"><strong>@App.Resources.QrForegroundColor</strong> @(App.Settings.QrForegroundColor)</li>
-              <li class="list-group-item"><strong>@App.Resources.QrSize</strong> @(App.Settings.QrDimension)</li>
+              <li class="list-group-item"><strong>@res.QrBackgroundColor</strong> @sett.QrBackgroundColor</li>
+              <li class="list-group-item"><strong>@res.QrForegroundColor</strong> @sett.QrForegroundColor</li>
+              <li class="list-group-item"><strong>@res.QrSize</strong> @sett.QrDimension</li>
             </ul>
-            <h3>@App.Resources.ShortlinkPro</h3>
+            <h3>@res.ShortlinkPro</h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>@App.Resources.EnablePro</strong> @(App.Settings.EnablePro)</li>
-                <li class="list-group-item"><strong>@App.Resources.SvgBackgroundColor</strong> @(App.Settings.QrSvgBackground)</li>
-                <li class="list-group-item"><strong>@App.Resources.SvgForegroundColor</strong> @(App.Settings.QrSvgForeground)</li>
-                <li class="list-group-item"><strong>@App.Resources.SvgSize</strong> @(App.Settings.QrSvgDimension)</li>
-                <li class="list-group-item"><strong>@App.Resources.SvgErrorCorrection</strong> @(App.Settings.QrSvgEcc)</li>
-                <li class="list-group-item"><strong>@App.Resources.SvgQuiteZone</strong> @(App.Settings.QrSvgQuietZone)</li>
+                <li class="list-group-item"><strong>@res.EnablePro</strong> @sett.EnablePro</li>
+                <li class="list-group-item"><strong>@res.SvgBackgroundColor</strong> @sett.QrSvgBackground</li>
+                <li class="list-group-item"><strong>@res.SvgForegroundColor</strong> @sett.QrSvgForeground</li>
+                <li class="list-group-item"><strong>@res.SvgSize</strong> @sett.QrSvgDimension</li>
+                <li class="list-group-item"><strong>@res.SvgErrorCorrection</strong> @sett.QrSvgEcc</li>
+                <li class="list-group-item"><strong>@res.SvgQuiteZone</strong> @sett.QrSvgQuietZone</li>
             </ul>
-            <h3>@App.Resources.ShortlinkTracking</h3>
+            <h3>@res.ShortlinkTracking</h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>@App.Resources.EnableTracking</strong> @(App.Settings.EnableQrUseTracking)</li>
-            </ul>
-            <h3>@App.Resources.RedirectSnippet</h3>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <textarea rows="15" cols="130">
-<!-- Rewrite all @App.Settings.ShortDomain/xyz to be handled by the redirect web service -->
-<rule name="Forward shortlinks to redirect-system" stopProcessing="true" enabled="true">
-  <!-- handle urls with 1 and 25 numbers/chars; adapt it as you need it  -->
-  <match url="^([A-Za-z0-9]{1,25})$" />
-
-  <!-- we only want to capture urls on the shortdomain @App.Settings.ShortDomain -->
-  <conditions>
-    <add input="{HTTP_HOST}" pattern="^(www\.)?@(App.Settings.ShortDomain.Replace(".", "\\."))$" ignoreCase="true" />
-  </conditions>
-
-  <!-- note that the root path can have subportal name in it - if the app is installed in a sub-portal -->
-  <!-- note also that in DNN9, the root path (after the sub-portal) is not desktopmodules/2sxc/api but instead /api/2sxc -->
-  <action type="Rewrite" url="/desktopmodules/2sxc/api/app/@App.Folder/api/redirect/go?key={R:1}" />
-</rule>
-                </textarea>
-              </li>
+                <li class="list-group-item"><strong>@res.EnableTracking</strong> @sett.EnableQrUseTracking</li>
             </ul>
           </div>
         </div>

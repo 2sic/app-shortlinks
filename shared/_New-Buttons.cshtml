@@ -20,18 +20,12 @@
     var newKey = Code.GenerateCode(prefix, length, true);
 
     @* FIXME: link prefill not working *@
-    @* <a href="javascript:;" class="btn btn-primary" onclick='$2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: "@newKey", Link: "@Request.RawUrl"}})'>
-      @App.Resources.BtnCreate: @newKey
-    </a> *@
-    <a href="javascript:;" class="btn btn-primary" onclick='$2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: "@newKey" }})'>
+    <a href="javascript:;" class="btn btn-primary" onclick='$2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: "@newKey", Link: "@Request.RawUrl"}})'>
       @App.Resources.BtnCreate: @newKey
     </a>
   }
   @* FIXME: link prefill not working *@
-  @* <a href="javascript:;" class="btn btn-primary" onclick='var key = prompt("new key?"); if(!key) return; $2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: key, Link: "@Request.RawUrl"}})'>
-    @App.Resources.BtnCreateManual
-  </a> *@
-  <a href="javascript:;" class="btn btn-primary" onclick='var key = prompt("@App.Resources.BtnCreateManualPrompt"); if(!key) return; $2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: key }})'>
+  <a href="javascript:;" class="btn btn-primary" onclick='var key = prompt("new key?"); if(!key) return; $2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: key, Link: "@Request.RawUrl"}})'>
     @App.Resources.BtnCreateManual
   </a>
 </div>

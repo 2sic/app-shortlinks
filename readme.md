@@ -16,8 +16,8 @@ The ShortLinks App has a lot of app settings and app resources you can configure
 
 ### Style
 
-The app only uses bootstrap 4 classes. To adjust the style you can adjust the bootstrap classes, add a own stylesheet or add inline styles.
+The app only uses bootstrap 4 classes. To adjust the style you can adjust the bootstrap classes, add an own stylesheet or add inline styles.
 
 ## Screenshots
 
-TODO: Read more about it in the [App Catalog]()
+Read more about it in the [App Catalog](https://2sxc.org/en/apps/app/short-links-app-for-2sxc-v2)
