@@ -1,6 +1,5 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Code12
 @using ToSic.Razor.Blade;
-
 @{
   var Lib = CreateInstance("shared/_Shortlink-Table.code.cshtml");
 
@@ -39,14 +38,14 @@
     @if(Edit.Enabled) {
       <div class="row">
         <div class="col-12">
-          @RenderPage("shared/_Shortlink-Table.cshtml", new { Links = pageLinks })
+          @Html.Partial("shared/_Shortlink-Table.cshtml", new { Links = pageLinks })
         </div>
         <div class="col-12">
-          @RenderPage("shared/_New-Buttons.cshtml")
+          @Html.Partial("shared/_New-Buttons.cshtml")
         </div>
       </div>
     }
   </div>
 </div>
 
-@RenderPage("shared/_Assets.cshtml")
+@Html.Partial("shared/_Assets.cshtml")

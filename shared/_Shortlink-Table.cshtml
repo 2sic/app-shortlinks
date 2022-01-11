@@ -1,9 +1,9 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Code12
 @using ToSic.Razor.Blade;
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
 @{
-  var links = (PageData["Links"] as Dynlist).OrderBy(x => x.Key);
+  var links = (DynamicModel.Links"] as Dynlist).OrderBy(x => x.Key);
 }
 
 <table class="table table-striped table-bordered">

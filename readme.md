@@ -1,23 +1,34 @@
-<image src="app-icon.png" align="right" width="200px">
+<img src="app-icon.png" align="right" width="200px">
 
-# ShortLinks App for DNN - The Quick-Links Manager
+# ShortLinks App for .net CMSs - The Quick-Links Manager 
+
+> This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
 Basically this is a URL shortener, similar to bit.ly or goo.gl - except that it's on your site, and under your control.
 
-## Installing the app
 
-You can install the app with the ["Installing the ShortLinks App" checklist](https://azing.org/2sxc/r/WxxkuZMn)
+| Aspect              | Status | Comments or Version |
+| ------------------- | :----: | ------------------- |
+| 2sxc                | ✅    | requires 2sxc v13
+| Dnn                 | ✅    | For v7, v8 and v9
+| Oqtane 2            | ✅    | Requires v2.02
+| No jQuery           | ✅    | 
+| Live Demo           | ➖    |
+| Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/WxxkuZMn) on [azing.org](https://azing.org/2sxc)
+| Source & License    | ✅    | included, ISC/MIT
+| App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/short-links-app-for-2sxc-v2)
+| Screenshots         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/short-links-app-for-2sxc-v2)
+| Best Practices      | ✅    | Uses v12.05 conventions
+| Bootstrap 3         | ✅    |
+| Bootstrap 4         | ✅    |
+| Bootstrap 5         | ✅    |
 
-## Customizing the app
+## Customize the App
 
-### Configuration (Settings, Resources)
+If you want to customize the CSS, you will usually follow the ["Create Custom Styles in a Standard 2sxc App" checklist](https://azing.org/2sxc/r/gg_aB9FD)
 
-The ShortLinks App has a lot of app settings and app resources you can configure.
 
-### Style
+## History
 
-The app only uses bootstrap 4 classes. To adjust the style you can adjust the bootstrap classes, add an own stylesheet or add inline styles.
+* v3 2022-01
 
-## Screenshots
-
-Read more about it in the [App Catalog](https://2sxc.org/en/apps/app/short-links-app-for-2sxc-v2)

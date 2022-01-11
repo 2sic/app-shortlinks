@@ -1,4 +1,4 @@
-@inherits ToSic.Sxc.Dnn.RazorComponentCode
+@inherits Custom.Hybrid.Code12Code
 
 @functions {
   private string qrPathTemplate = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone={qzone}&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}";
@@ -36,7 +36,8 @@
     if(preprocess) {
       key = PreprocessUrl(key);
     }
-    return "/shortlink-system/en-us/desktopmodules/2sxc/api/app/shortlinks/api/redirect/go?key=" + key;
+    // Todo: @2mh - use Link.To(api: ...)
+    return "/shortlink-system/en-us/api/2sxc/app/shortlinks/api/Redirect/go?key=" + key;
   }
 
   public string QrLink(string target) {
