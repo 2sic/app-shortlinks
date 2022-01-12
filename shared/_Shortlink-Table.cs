@@ -1,43 +1,42 @@
-@inherits Custom.Hybrid.Code12Code
-
-@functions {
+public class ShortLinkTable: Custom.Hybrid.Code12
+{
+  private string _qrPath;
   private string qrPathTemplate = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone={qzone}&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}";
+  private string _qrSvgPath;
+  
   string QrPath {
     get {
       if(_qrPath == null) {
         _qrPath = QrCodeGenerator(
-          App.Settings.QrForegroundColor,
-          App.Settings.QrBackgroundColor,
-          Decimal.ToInt32(App.Settings.QrDimension),
-          App.Settings.QrEcc,
+          Settings.QrForegroundColor,
+          Settings.QrBackgroundColor,
+          Decimal.ToInt32(Settings.QrDimension),
+          Settings.QrEcc,
           0,
           null);
       }
       return _qrPath;
     }
   }
-  private string _qrPath;
   string QrSvgPath {
     get {
       if(_qrSvgPath == null)
         _qrSvgPath = QrCodeGenerator(
-          App.Settings.QrSvgForeground,
-          App.Settings.QrSvgBackground,
-          Decimal.ToInt32(App.Settings.QrSvgDimension),
-          App.Settings.QrSvgEcc,
-          Decimal.ToInt32(App.Settings.QrSvgQuietZone),
+          Settings.QrSvgForeground,
+          Settings.QrSvgBackground,
+          Decimal.ToInt32(Settings.QrSvgDimension),
+          Settings.QrSvgEcc,
+          Decimal.ToInt32(Settings.QrSvgQuietZone),
           "svg");
       return _qrSvgPath;
     }
   }
-  private string _qrSvgPath;
-
   public string TestLink(string key, bool preprocess) {
     if(preprocess) {
       key = PreprocessUrl(key);
     }
-    // Todo: @2mh - use Link.To(api: ...)
-    return "/shortlink-system/en-us/api/2sxc/app/shortlinks/api/Redirect/go?key=" + key;
+    // "/shortlink-system/en-us/api/2sxc/app/shortlinks/api/Redirect/go?key=" + key
+    return Link.To(api: "key=" + key);
   }
 
   public string QrLink(string target) {
@@ -47,14 +46,14 @@
 
   public string QrSvgLink(string target) {
     target = PreprocessUrl(target);
-    return App.Settings.EnablePro
+    return Settings.EnablePro
       ? QrSvgPath.Replace("{link}", target)
       : "";
   }
 
   public string QrEpsLink(string target) {
     target = PreprocessUrl(target);
-    return App.Settings.EnablePro
+    return Settings.EnablePro
       ? QrSvgPath.Replace("=svg&", "=eps&").Replace("{link}", target)
       : "";
   }
@@ -80,7 +79,7 @@
   // see also https://azing.org/2sxc/r/A7LozGPM
   public string PreprocessUrl(string target) {
     // don't do this unless pro features are enabled
-    if(!App.Settings.EnableQrUseTracking)
+    if(!Settings.EnableQrUseTracking)
       return target;
 
     // requires that original url key doesn't have upper-case

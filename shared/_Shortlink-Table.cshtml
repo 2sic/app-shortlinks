@@ -3,25 +3,25 @@
 @using Dynlist = System.Collections.Generic.IEnumerable<dynamic>;
 
 @{
-  var links = (DynamicModel.Links"] as Dynlist).OrderBy(x => x.Key);
+  var links = (DynamicModel.Links as Dynlist).OrderBy(x => x.Key);
 }
 
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>@App.Resources.TableHlKey</th>
-      <th>@App.Resources.TableHlGroup</th>
-      <th>@App.Resources.TableHlTitle</th>
-      <th>@App.Resources.TableHlTarget</th>
+      <th>@Resources.TableHlKey</th>
+      <th>@Resources.TableHlGroup</th>
+      <th>@Resources.TableHlTitle</th>
+      <th>@Resources.TableHlTarget</th>
       <th class="text-center" title="Enabled or Retired/Disabled">✔️</th>
       <th class="text-center" title="Show to user">👁️</th>
-      <th class="text-center">@App.Resources.TableHlQR</th>
-      <th class="text-center">@App.Resources.TableHlTests</th>
+      <th class="text-center">@Resources.TableHlQR</th>
+      <th class="text-center">@Resources.TableHlTests</th>
     </tr>
   </thead>
   <tbody>
     @foreach(var link in links) {
-      var full = "//" + App.Settings.ShortDomain + "/" + link.Key;
+      var full = "//" + Settings.ShortDomain + "/" + link.Key;
 
       <tr @Edit.TagToolbar(link, toolbar: new [] {"toolbar=default&hover=left", "-layout"})>
         <td>@link.Key</td>
@@ -38,7 +38,7 @@
         <td class="text-center">@(link.Show == true ? "👁": "")</td>
         <td class="text-center">
           <a href="@Tags.SafeUrl(Code.QrLink(full))" target="_blank">png</a>
-          @if(App.Settings.EnablePro) {
+          @if(Settings.EnablePro) {
             <br/>
             <a href="@Tags.SafeUrl(Code.QrSvgLink(full))" target="_blank">svg</a>
             <a href="@Tags.SafeUrl(Code.QrEpsLink(full))" target="_blank">eps</a>
@@ -48,15 +48,15 @@
           <ul class="list-inline" >
             <li class="list-inline-item">
               <a class="text-decoration-none" href="@Tags.SafeUrl(full)" target="_blank" title="@full">🔗</a>
-              @if(App.Settings.EnableQrUseTracking) {
-                var proDiffUrl = Tags.SafeUrl("//" + App.Settings.ShortDomain + "/" + Code.PreprocessUrl(link.Key));
+              @if(Settings.EnableQrUseTracking) {
+                var proDiffUrl = Tags.SafeUrl("//" + Settings.ShortDomain + "/" + Code.PreprocessUrl(link.Key));
 
                 <a class="text-decoration-none" href="@proDiffUrl" target="_blank" title="@proDiffUrl">⚡</a>
               }
             </li>
             <li class="list-inline-item">
               <a class="text-decoration-none" href="@Tags.SafeUrl(Code.TestLink(link.Key, false))" target="_blank">#️⃣</a>
-              @if(App.Settings.EnableQrUseTracking) {
+              @if(Settings.EnableQrUseTracking) {
                 <a class="text-decoration-none" href="@Tags.SafeUrl(Code.TestLink(link.Key, true))" target="_blank">⚡</a>
               }
             </li>

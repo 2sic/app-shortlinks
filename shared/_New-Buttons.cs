@@ -1,6 +1,5 @@
-@inherits Custom.Hybrid.Code12Code
+public class NewButtons: Custom.Hybrid.Code12 {
 
-@functions {
   // this is the block in charge of creating unique, new url-keys which are not yet in use
   public string GenerateCode(string prefix, int length, bool lowerOnly) {
     int maxTries = 100; // only try this 100x to not crash
