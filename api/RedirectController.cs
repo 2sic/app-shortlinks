@@ -8,11 +8,7 @@ using Microsoft.AspNetCore.Mvc;           // .net core [HttpGet] / [HttpPost] et
 using System.Web.Http;
 #endif
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using ToSic.Razor.Blade;
-using System.Web;
 using System.Net;
 using System.Net.Http;
 using ToSic.Razor.Blade;
