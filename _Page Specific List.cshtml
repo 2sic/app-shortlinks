@@ -1,7 +1,7 @@
-@inherits Custom.Hybrid.Code12
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
-  var Lib = CreateInstance("shared/_Shortlink-Table.code.cshtml");
+  var helper = CreateInstance("shared/Helper.cs");
 
   // find all short-links pointing to this page
   var currentPath = Request.RawUrl.ToLower();
@@ -17,7 +17,7 @@
       <div class="row row-centered mt-4 mb-5">
         <div class="col-xs-4 col-sm-3 col-centered">
           <a href="@Tags.SafeUrl(full)" target="_blank" class="float-right">
-            <img loading="lazy" src="@Link.Image(Lib.QrLink(full))" width="80"><br>
+            <img loading="lazy" src="@Link.Image(helper.QrLink(full))" width="80"><br>
             <small>@domainAndKey</small>
           </a>
         </div>

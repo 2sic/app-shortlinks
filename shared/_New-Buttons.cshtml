@@ -1,7 +1,9 @@
-@inherits Custom.Hybrid.Code12
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 
 @{
+  var helper = CreateInstance("Helper.cs");
+
   // try to load from module settings first
   var pref = Content != null
     ? Text.First(Content.Prefix, Settings.GenerateKeyPrefix)
@@ -14,17 +16,15 @@
     : (int)Settings.GenerateKeyLength;
 }
 
-<div class="btn-wrapper my-3">
+<div class="my-3">
   @foreach(var prefix in prefixList) {
     // generate a new random key for this page, in case the admin wants to add it
-    var newKey = Code.GenerateCode(prefix, length, true);
+    var newKey = helper.GenerateCode(prefix, length, true);
 
-    @* FIXME: link prefill not working *@
     <a href="javascript:;" class="btn btn-primary" onclick='$2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: "@newKey", Link: "@Request.RawUrl"}})'>
       @Resources.BtnCreate: @newKey
     </a>
   }
-  @* FIXME: link prefill not working *@
   <a href="javascript:;" class="btn btn-primary" onclick='var key = prompt("new key?"); if(!key) return; $2sxc(this).manage.run("new", {contentType: "Link", prefill: { Key: key, Link: "@Request.RawUrl"}})'>
     @Resources.BtnCreateManual
   </a>

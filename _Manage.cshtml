@@ -1,55 +1,52 @@
-@inherits Custom.Hybrid.Code12
+@inherits Custom.Hybrid.Razor12
 
 @* the manage UI is only meant for admins - so additional protection is added just in case it's on the wrong page *@
 @if(!Edit.Enabled) { return; }
 
 <div class="container-fluid app-shortlinks-wrapper" @Edit.TagToolbar(Content)>
-  <div class="ly-container-inner">
-    <div class="row">
-      <div class="col-12">
-        <h1>@Resources.TableTitle</h1>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <h1>@Resources.TableTitle</h1>
     </div>
-    <div class="row">
-      <div class="col-12">
-        @Html.Partial("shared/_Shortlink-Table.cshtml", new {Links = AsList(App.Data["Link"])})
+  </div>
+  <div class="row">
+    <div class="col-12">
+      @Html.Partial("shared/_Shortlink-Table.cshtml", new {Links = AsList(App.Data["Link"])})
+      @Html.Partial("shared/_New-Buttons.cshtml")
 
-        @Html.Partial("shared/_New-Buttons.cshtml")
+      <div class="configuration-info mt-5">
+        <h3>@Resources.ShortlinkConfiguration</h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>@Resources.ConfigurationCompleted</strong>
+            @(Settings.ConfigurationComplete == true ? "✔️" : "🚫")
+            @Html.Raw(Resources.ConfigurationInstructions)
+            and <a href='@Link.To(parameters: "webconfig=true")' target="_blank">Web.Config Snippet</a>
+          </li>
 
-        <div class="configuration-info mt-5">
-          <h3>@Resources.ShortlinkConfiguration</h3>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <strong>@Resources.ConfigurationCompleted</strong>
-              @(Settings.ConfigurationComplete == true ? "✔️" : "🚫")
-              @Html.Raw(Resources.ConfigurationInstructions)
-              and <a href='@Link.To(parameters: "webconfig=true")' target="_blank">Web.Config Snippet</a>
-            </li>
+          <li class="list-group-item"><strong>@Resources.TargetDomain</strong> @("//" + Settings.TargetDomain)</li>
+          <li class="list-group-item"><strong>@Resources.ShortDomain</strong> @("//" + Settings.ShortDomain)</li>
 
-            <li class="list-group-item"><strong>@Resources.TargetDomain</strong> @("//" + Settings.TargetDomain)</li>
-            <li class="list-group-item"><strong>@Resources.ShortDomain</strong> @("//" + Settings.ShortDomain)</li>
+          <li class="list-group-item"><strong>@Resources.DefaultKeyPrefixes</strong> @Settings.GenerateKeyPrefix</li>
+          <li class="list-group-item"><strong>@Resources.DefaultKeyLength</strong> @Settings.GenerateKeyLength</li>
 
-            <li class="list-group-item"><strong>@Resources.DefaultKeyPrefixes</strong> @Settings.GenerateKeyPrefix</li>
-            <li class="list-group-item"><strong>@Resources.DefaultKeyLength</strong> @Settings.GenerateKeyLength</li>
-
-            <li class="list-group-item"><strong>@Resources.QrBackgroundColor</strong> @Settings.QrBackgroundColor</li>
-            <li class="list-group-item"><strong>@Resources.QrForegroundColor</strong> @Settings.QrForegroundColor</li>
-            <li class="list-group-item"><strong>@Resources.QrSize</strong> @Settings.QrDimension</li>
-          </ul>
-          <h3>@Resources.ShortlinkPro</h3>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>@Resources.EnablePro</strong> @Settings.EnablePro</li>
-              <li class="list-group-item"><strong>@Resources.SvgBackgroundColor</strong> @Settings.QrSvgBackground</li>
-              <li class="list-group-item"><strong>@Resources.SvgForegroundColor</strong> @Settings.QrSvgForeground</li>
-              <li class="list-group-item"><strong>@Resources.SvgSize</strong> @Settings.QrSvgDimension</li>
-              <li class="list-group-item"><strong>@Resources.SvgErrorCorrection</strong> @Settings.QrSvgEcc</li>
-              <li class="list-group-item"><strong>@Resources.SvgQuiteZone</strong> @Settings.QrSvgQuietZone</li>
-          </ul>
-          <h3>@Resources.ShortlinkTracking</h3>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>@Resources.EnableTracking</strong> @Settings.EnableQrUseTracking</li>
-          </ul>
-        </div>
+          <li class="list-group-item"><strong>@Resources.QrBackgroundColor</strong> @Settings.QrBackgroundColor</li>
+          <li class="list-group-item"><strong>@Resources.QrForegroundColor</strong> @Settings.QrForegroundColor</li>
+          <li class="list-group-item"><strong>@Resources.QrSize</strong> @Settings.QrDimension</li>
+        </ul>
+        <h3>@Resources.ShortlinkPro</h3>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>@Resources.EnablePro</strong> @Settings.EnablePro</li>
+            <li class="list-group-item"><strong>@Resources.SvgBackgroundColor</strong> @Settings.QrSvgBackground</li>
+            <li class="list-group-item"><strong>@Resources.SvgForegroundColor</strong> @Settings.QrSvgForeground</li>
+            <li class="list-group-item"><strong>@Resources.SvgSize</strong> @Settings.QrSvgDimension</li>
+            <li class="list-group-item"><strong>@Resources.SvgErrorCorrection</strong> @Settings.QrSvgEcc</li>
+            <li class="list-group-item"><strong>@Resources.SvgQuiteZone</strong> @Settings.QrSvgQuietZone</li>
+        </ul>
+        <h3>@Resources.ShortlinkTracking</h3>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>@Resources.EnableTracking</strong> @Settings.EnableQrUseTracking</li>
+        </ul>
       </div>
     </div>
   </div>

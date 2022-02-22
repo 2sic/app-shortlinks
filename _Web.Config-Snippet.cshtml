@@ -1,4 +1,4 @@
-@inherits Custom.Hybrid.Code12
+@inherits Custom.Hybrid.Razor12
 
 <h1>@Resources.RedirectSnippet</h1>
 <textarea rows="15" cols="130">
@@ -14,7 +14,7 @@
 
     <!-- note that the root path can have subportal name in it - if the app is installed in a sub-portal -->
     <!-- note also that in DNN9, the root path (after the sub-portal) is not desktopmodules/2sxc/api but instead /api/2sxc -->
-    <action type="Rewrite" url="/desktopmodules/2sxc/api/app/@App.Folder/api/redirect/go?key={R:1}" />
+    <action type="Rewrite" url='@Link.To(api: "api/redirect/go", parameters: "key={R:1}")' />
   </rule>
 </textarea>
 

@@ -1,4 +1,7 @@
-public class ShortLinkTable: Custom.Hybrid.Code12
+using System;
+using System.Linq;
+
+public class Helper: Custom.Hybrid.Code12
 {
   private string _qrPath;
   private string qrPathTemplate = "//api.qrserver.com/v1/create-qr-code/?color={foreground}&bgcolor={background}&qzone={qzone}&margin=0&size={dim}x{dim}&ecc={ecc}&data={link}";
@@ -35,8 +38,7 @@ public class ShortLinkTable: Custom.Hybrid.Code12
     if(preprocess) {
       key = PreprocessUrl(key);
     }
-    // "/shortlink-system/en-us/api/2sxc/app/shortlinks/api/Redirect/go?key=" + key
-    return Link.To(api: "key=" + key);
+    return Link.To(api: "api/Redirect/go", parameters: "key=" + key);
   }
 
   public string QrLink(string target) {
@@ -87,5 +89,35 @@ public class ShortLinkTable: Custom.Hybrid.Code12
       return "Error: can't use CAP$ on this url because it contains upper case characters - which is bad practice";
 
     return target.ToUpper() + "$";
+  }
+
+  // this is the block in charge of creating unique, new url-keys which are not yet in use
+  public string GenerateCode(string prefix, int length, bool lowerOnly) {
+    int maxTries = 100; // only try this 100x to not crash
+    var realLength = length - prefix.Length;
+    var existingKeys = AsList(App.Data["Link"])
+      .Select(l => l.Key)
+      .Distinct()
+      .ToDictionary(k => k, null);
+
+    for(var attempt = 0; attempt < maxTries; attempt++) {
+      var newKey = prefix + RandomString(realLength, lowerOnly);
+      if(!existingKeys.ContainsKey(newKey))
+        return newKey;
+    }
+
+    throw new Exception("tried too many attempts, didn't find a code, will abort'");
+  }
+
+  // funky, trivial randomizer
+  // got basic idea from http://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings-in-c
+  private static Random random = new Random();
+
+  public static string RandomString(int length, bool lowerOnly) {
+    const string chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    const string withUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + chars;
+
+    return new string(Enumerable.Repeat(lowerOnly ? chars : withUpper, length)
+      .Select(s => s[random.Next(s.Length)]).ToArray());
   }
 }
